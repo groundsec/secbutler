@@ -17,9 +17,9 @@
 
 The goal is to obtain a tool that meets the requirements of the community, therefore suggestions and PRs are very welcome!
 
-## Features
+## ⚡ Features
 
-## Usage
+## 📚 Usage
 
 ```
 secbutler -h
@@ -31,7 +31,7 @@ This will display the help for the tool
 This section is clearly still a work in progress!
 ```
 
-## Install
+## 🚀 Installation
 
 Run the following command to install the latest version:
 
@@ -39,6 +39,6 @@ Run the following command to install the latest version:
 go install github.com/groundsec/secbutler@latest
 ```
 
-## License
+## 🪪 License
 
 _secbutler_ is made with 🖤 by the [GroundSec](https://groundsec.io) team and released under the [MIT LICENSE](https://github.com/groundsec/secbutler/blob/main/LICENSE)
