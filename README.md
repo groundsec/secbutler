@@ -5,10 +5,10 @@
 <h4 align="center">Essential utilities for pentester, bug-bounty hunters and security researchers</h4>
 
 <p align="center">
-  <a href="#features">Features</a> •
-  <a href="#usage">Usage</a> •
-  <a href="#installation">Installation</a> •
-  <a href="#license">License</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-license">License</a> •
 </p>
 
 ---
@@ -18,6 +18,14 @@
 The goal is to obtain a tool that meets the requirements of the community, therefore suggestions and PRs are very welcome!
 
 ## ⚡ Features
+
+- Manage SecLists
+- Obtain proxy
+- Download CVE PoC
+- Record session
+- Launch netcat listener
+- Deploy common payloads
+- Generate a reverse shell command
 
 ## 📚 Usage
 
@@ -41,4 +49,4 @@ go install github.com/groundsec/secbutler@latest
 
 ## 🪪 License
 
-_secbutler_ is made with 🖤 by the [GroundSec](https://groundsec.io) team and released under the [MIT LICENSE](https://github.com/groundsec/secbutler/blob/main/LICENSE)
+_secbutler_ is made with 🖤 by the [GroundSec](https://groundsec.io) team and released under the [MIT LICENSE](https://github.com/groundsec/secbutler/blob/main/LICENSE).
