@@ -26,3 +26,4 @@ resume.cfg
 tmp
 static
 .DS_Store
+dist/
