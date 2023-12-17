@@ -1,16 +1,18 @@
 module github.com/groundsec/secbutler
 
-go 1.20
+go 1.21.5
 
 require (
 	github.com/erikgeiser/promptkit v0.9.0
+	github.com/groundsec/gogetfp v0.1.0
 	github.com/sirupsen/logrus v1.9.3
-	github.com/soluchok/freeproxy v0.0.0-20200112224202-ccb33291a087
 	github.com/spf13/cobra v1.8.0
 	golang.org/x/exp v0.0.0-20231214170342-aacd6d4b4611
 )
 
 require (
+	github.com/PuerkitoBio/goquery v1.8.1 // indirect
+	github.com/andybalholm/cascadia v1.3.1 // indirect
 	github.com/atotto/clipboard v0.1.4 // indirect
 	github.com/aymanbagabas/go-osc52/v2 v2.0.1 // indirect
 	github.com/charmbracelet/bubbles v0.16.1 // indirect
@@ -26,15 +28,11 @@ require (
 	github.com/muesli/cancelreader v0.2.2 // indirect
 	github.com/muesli/reflow v0.3.0 // indirect
 	github.com/muesli/termenv v0.15.2 // indirect
-	github.com/patrickmn/go-cache v2.1.0+incompatible // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
-	github.com/robertkrimen/otto v0.0.0-20180617131154-15f95af6e78d // indirect
-	github.com/soluchok/go-cloudflare-scraper v0.0.0-20190117212330-ecf651d4e614 // indirect
-	github.com/soluchok/gokogiri v0.0.0-20190903214353-0718098bc8db // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
+	golang.org/x/net v0.7.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
 	golang.org/x/sys v0.11.0 // indirect
 	golang.org/x/term v0.11.0 // indirect
 	golang.org/x/text v0.12.0 // indirect
-	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 )
