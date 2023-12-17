@@ -6,6 +6,7 @@ import (
 
 	"github.com/groundsec/gogetfp"
 	"github.com/groundsec/secbutler/pkg/logger"
+	"github.com/groundsec/secbutler/pkg/utils"
 )
 
 func GetProxy(untestedFlag bool, randomFlag bool, httpsFlag bool, eliteFlag bool, anonFlag bool, googleFlag bool, countriesFlag string) {
@@ -24,12 +25,13 @@ func GetProxy(untestedFlag bool, randomFlag bool, httpsFlag bool, eliteFlag bool
 		CountryID: countryID,
 	}
 
-	fmt.Printf(" 📝  Untested\t\t%t\n", untestedFlag)
-	fmt.Printf(" 🎲  Random\t\t%t\n", randomFlag)
-	fmt.Printf(" 🔒  HTTPS\t\t%t\n", httpsFlag)
-	fmt.Printf(" 🌟  Elite\t\t%t\n", eliteFlag)
-	fmt.Printf(" 🎭  Anonymous\t\t%t\n", anonFlag)
-	fmt.Printf(" 🔍  Google\t\t%t\n", googleFlag)
+	fmt.Println("Proxy config:")
+	fmt.Printf(" 📝  Untested\t\t%s%t%s\n", utils.BooleanColorCode(untestedFlag), untestedFlag, utils.ANSICodes["Reset"])
+	fmt.Printf(" 🎲  Random\t\t%s%t%s\n", utils.BooleanColorCode(randomFlag), randomFlag, utils.ANSICodes["Reset"])
+	fmt.Printf(" 🔒  HTTPS\t\t%s%t%s\n", utils.BooleanColorCode(httpsFlag), httpsFlag, utils.ANSICodes["Reset"])
+	fmt.Printf(" 🌟  Elite\t\t%s%t%s\n", utils.BooleanColorCode(eliteFlag), eliteFlag, utils.ANSICodes["Reset"])
+	fmt.Printf(" 🎭  Anonymous\t\t%s%t%s\n", utils.BooleanColorCode(anonFlag), anonFlag, utils.ANSICodes["Reset"])
+	fmt.Printf(" 🔍  Google\t\t%s%t%s\n", utils.BooleanColorCode(googleFlag), googleFlag, utils.ANSICodes["Reset"])
 	fmt.Printf(" 🌍  Countries\t\t%s\n", countryID)
 	fmt.Println()
 

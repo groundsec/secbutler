@@ -19,13 +19,13 @@ The goal is to obtain a tool that meets the requirements of the community, there
 
 ## ⚡ Features
 
-- Manage SecLists
-- Obtain proxy
-- Download CVE PoC
-- Record session
-- Launch netcat listener
-- Deploy common payloads
-- Generate a reverse shell command
+- [x] Generate a reverse shell command
+- [x] Obtain proxy
+- [ ] Manage SecLists
+- [ ] Download CVE PoC
+- [ ] Record session
+- [ ] Launch netcat listener
+- [ ] Deploy common payloads
 
 ## 📚 Usage
 
