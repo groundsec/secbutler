@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/groundsec/secbutler/pkg/logger"
+	"github.com/groundsec/secbutler/pkg/utils"
 	"github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 )
@@ -29,6 +30,7 @@ func init() {
 	completion.Hidden = true
 	rootCmd.AddCommand(completion)
 	logger.SetLevel(logrus.InfoLevel)
+	utils.CheckAndCreateSecbutlerDir()
 }
 
 func Execute() {
