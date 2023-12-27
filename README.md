@@ -22,8 +22,8 @@ The goal is to obtain a tool that meets the requirements of the community, there
 - [x] Generate a reverse shell command
 - [x] Obtain proxy
 - [x] Download & deploy common payloads
+- [ ] Launch reverse shell listener
 - [ ] Manage Wordlists
-- [ ] Launch netcat listener
 - [ ] Generate bash install script for common tools
 - [ ] Record session
 
