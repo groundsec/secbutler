@@ -13,7 +13,7 @@
 
 ---
 
-`secbutler` is a utility tool made for **pentesters**, **bug-bounty hunters** and **security researchers** that contains all the most used and tedious stuff commonly used while performing cybersecurity activities.
+`secbutler` is a utility tool made for **pentesters**, **bug-bounty hunters** and **security researchers** that contains all the most used and tedious stuff commonly used while performing cybersecurity activities (like installing sec-related tools, retrieving commands for revshells, serving common payloads, obtaining a working proxy, managing wordlists and so forth).
 
 The goal is to obtain a tool that meets the requirements of the community, therefore suggestions and PRs are very welcome!
 
