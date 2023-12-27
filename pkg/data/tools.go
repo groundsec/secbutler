@@ -110,6 +110,99 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/glebarez/cero@latest`,
 	},
 	{
+		Name:         "masscan",
+		Category:     "Recon",
+		Subcategory:  "Port Scanning",
+		Requirements: []string{"make", "git", "gcc"},
+		InstallCmd: `
+		git clone https://github.com/robertdavidgraham/masscan
+		cd masscan
+		make
+		make install
+		cd ..
+		`,
+	},
+	{
+		Name:         "RustScan",
+		Category:     "Recon",
+		Subcategory:  "Port Scanning",
+		Requirements: []string{"cargo"},
+		InstallCmd: `
+		git clone https://github.com/RustScan/RustScan.git
+		cd RustScan
+		cargo build --release
+		cd ..
+		`,
+	},
+	{
+		Name:         "Naabu",
+		Category:     "Recon",
+		Subcategory:  "Port Scanning",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest`,
+	},
+	{
+		Name:         "Nmap",
+		Category:     "Recon",
+		Subcategory:  "Port Scanning",
+		Requirements: []string{"git", "make", "gcc"},
+		InstallCmd: `
+		git clone https://github.com/nmap/nmap.git
+		cd nmap
+		./configure
+		make
+		make install
+		cd ..
+		`,
+	},
+	{
+		Name:         "Sandmap",
+		Category:     "Recon",
+		Subcategory:  "Port Scanning",
+		Requirements: []string{},
+		InstallCmd: `
+		git clone --recursive https://github.com/trimstray/sandmap
+		cd sandmap
+		./setup.sh install
+		sandmap
+		`,
+	},
+	{
+		Name:         "",
+		Category:     "",
+		Subcategory:  "",
+		Requirements: []string{},
+		InstallCmd:   ``,
+	},
+	{
+		Name:         "",
+		Category:     "",
+		Subcategory:  "",
+		Requirements: []string{},
+		InstallCmd:   ``,
+	},
+	{
+		Name:         "",
+		Category:     "",
+		Subcategory:  "",
+		Requirements: []string{},
+		InstallCmd:   ``,
+	},
+	{
+		Name:         "",
+		Category:     "",
+		Subcategory:  "",
+		Requirements: []string{},
+		InstallCmd:   ``,
+	},
+	{
+		Name:         "",
+		Category:     "",
+		Subcategory:  "",
+		Requirements: []string{},
+		InstallCmd:   ``,
+	},
+	{
 		Name:         "",
 		Category:     "",
 		Subcategory:  "",
