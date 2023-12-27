@@ -20,6 +20,10 @@ var payloads = []types.Payloads{
 	{Name: "pspy 32bit small version", Filename: "pspy32s", DownloadURL: "https://github.com/DominicBreuker/pspy/releases/latest/download/pspy32s"},
 	{Name: "pspy 64bit small version", Filename: "pspy64s", DownloadURL: "https://github.com/DominicBreuker/pspy/releases/latest/download/pspy64s"},
 	{Name: "Linux Exploit Suggester", Filename: "les.sh", DownloadURL: "https://raw.githubusercontent.com/mzet-/linux-exploit-suggester/master/linux-exploit-suggester.sh"},
+	{Name: "LinEnum", Filename: "LinEnum.sh", DownloadURL: "https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh"},
+	{Name: "Enumy32", Filename: "enumy32", DownloadURL: "https://github.com/luke-goddard/enumy/releases/latest/download/enumy32"},
+	{Name: "Enumy64", Filename: "enumy64", DownloadURL: "https://github.com/luke-goddard/enumy/releases/latest/download/enumy64"},
+	{Name: "truffleproc", Filename: "truffleproc.sh", DownloadURL: "https://raw.githubusercontent.com/controlplaneio/truffleproc/master/truffleproc.sh"},
 }
 
 func downloadPayloads() {
@@ -67,8 +71,8 @@ func ServePayloads() {
 		fmt.Printf("%s%s%s%s (%s)\n", utils.ANSICodes["Red"], utils.ANSICodes["Bold"], payload.Name, utils.ANSICodes["Reset"], payload.Filename)
 		fmt.Printf("wget http://%s:%d/%s\n\n", currentIP, port, payload.Filename)
 	}
-	fmt.Println()
 
+	fmt.Printf("%s%sPress Ctrl-C to stop the server%s\n", utils.ANSICodes["Blue"], utils.ANSICodes["Bold"], utils.ANSICodes["Reset"])
 	err = http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
 	if err != nil {
 		logger.Error(err)
