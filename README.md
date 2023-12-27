@@ -22,7 +22,7 @@ The goal is to obtain a tool that meets the requirements of the community, there
 - [x] Generate a reverse shell command
 - [x] Obtain proxy
 - [x] Download & deploy common payloads
-- [ ] Launch reverse shell listener
+- [x] Launch reverse shell listener
 - [ ] Manage Wordlists
 - [ ] Generate bash install script for common tools
 - [ ] Record session
@@ -36,7 +36,31 @@ secbutler -h
 This will display the help for the tool
 
 ```
-This section is clearly still a work in progress!
+                   __          __  __
+   ________  _____/ /_  __  __/ /_/ /__  _____
+  / ___/ _ \/ ___/ __ \/ / / / __/ / _ \/ ___/
+ (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /
+/____/\___/\___/_.___/\__,_/\__/_/\___/_/
+
+v0.1.2 - https://github.com/groundsec/secbutler
+
+Essential utilities for pentester, bug-bounty hunters and security researchers
+
+Usage:
+  secbutler [flags]
+  secbutler [command]
+
+Available Commands:
+  help        Help about any command
+  listener    Obtain the command to start a reverse shell listener
+  payloads    Obtain and serve common payloads
+  proxy       Obtain a random proxy from FreeProxy
+  revshell    Obtain the command for a reverse shell
+
+Flags:
+  -h, --help   help for secbutler
+
+Use "secbutler [command] --help" for more information about a command.
 ```
 
 ## 🚀 Installation
