@@ -69,5 +69,8 @@ func ServePayloads() {
 	}
 	fmt.Println()
 
-	http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	err = http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	if err != nil {
+		logger.Error(err)
+	}
 }
