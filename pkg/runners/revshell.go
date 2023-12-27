@@ -24,7 +24,6 @@ func revshellFormatter(revshellName string, host string, port string) {
 	}
 
 	logger.Error("Unable to find selected reverse shell")
-
 }
 
 func GetReverseShell() {

@@ -7,3 +7,8 @@ type RevShell struct {
 	OS       []string
 	ShellTpl string
 }
+
+type RevShellListener struct {
+	Name        string
+	ListenerTpl string
+}

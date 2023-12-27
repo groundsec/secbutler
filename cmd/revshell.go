@@ -7,7 +7,7 @@ import (
 
 var revshellCmd = &cobra.Command{
 	Use:   "revshell",
-	Short: "Obtain the code for a reverse shell",
+	Short: "Obtain the command for a reverse shell",
 	Run: func(cmd *cobra.Command, args []string) {
 		runners.GetReverseShell()
 	},
