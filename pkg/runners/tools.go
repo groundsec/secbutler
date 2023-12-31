@@ -76,7 +76,7 @@ var endInstallScriptTpl = `
 function main {
   banner
   check_requirements
-	cd $HOME/.secbutler/tools
+  mkdir -p $HOME/.secbutler/tools && cd $HOME/.secbutler/tools
   install_tools
 }
 
