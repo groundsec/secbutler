@@ -22,8 +22,8 @@ The goal is to obtain a tool that meets the requirements of the community, there
 - [x] Generate a reverse shell command
 - [x] Obtain proxy
 - [x] Download & deploy common payloads
-- [x] Launch reverse shell listener
-- [ ] Generate bash install script for common tools
+- [x] Obtain reverse shell listener command
+- [x] Generate bash install script for common tools
 - [ ] Manage Wordlists
 - [ ] Record session
 
@@ -42,7 +42,7 @@ This will display the help for the tool
  (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /
 /____/\___/\___/_.___/\__,_/\__/_/\___/_/
 
-v0.1.2 - https://github.com/groundsec/secbutler
+v0.1.3 - https://github.com/groundsec/secbutler
 
 Essential utilities for pentester, bug-bounty hunters and security researchers
 
@@ -56,6 +56,7 @@ Available Commands:
   payloads    Obtain and serve common payloads
   proxy       Obtain a random proxy from FreeProxy
   revshell    Obtain the command for a reverse shell
+  tools       Generate a install script for the most common cybersecurity tools
 
 Flags:
   -h, --help   help for secbutler
