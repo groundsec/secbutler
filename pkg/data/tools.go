@@ -166,7 +166,6 @@ var SecTools = []types.SecTool{
 		git clone --recursive https://github.com/trimstray/sandmap &> /dev/null
 		cd sandmap
 		./setup.sh install &> /dev/null
-		sandmap
 		`,
 	},
 	/*
