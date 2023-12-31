@@ -189,6 +189,9 @@ func GenerateToolsInstallScript() {
 		Message: "Select the groups/tools you want:",
 		Options: groupedOptions,
 	}
-	survey.AskOne(prompt, &chosenGroups)
+	err = survey.AskOne(prompt, &chosenGroups)
+	if err != nil {
+		logger.Fatalf("Error: %v", err)
+	}
 	generateScript(groupingChoice, chosenGroups)
 }
