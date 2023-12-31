@@ -21,30 +21,34 @@ func BooleanColorCode(boolValue bool) string {
 	}
 }
 
-func CheckAndCreateSecbutlerDir() {
-	mainDirName := ".secbutler"
-	payloadsDirName := "payloads"
+func UserHomeDir() string {
 	homeDir, err := os.UserHomeDir()
 	if err != nil {
 		logger.Fatal(err)
 	}
-	secbutlerDir := filepath.Join(homeDir, mainDirName)
-	payloadsDir := filepath.Join(homeDir, mainDirName, payloadsDirName)
+	return homeDir
+}
+
+func CheckAndCreateSecbutlerDir() {
+
+	homeDir := UserHomeDir()
+	secbutlerDir := filepath.Join(homeDir, MainDirName)
+	payloadsDir := filepath.Join(homeDir, MainDirName, PayloadsDirName)
 
 	// Creating main dir
 	if _, err := os.Stat(secbutlerDir); os.IsNotExist(err) {
-		logger.Info(fmt.Sprintf("Creating %s/%s directory...", homeDir, mainDirName))
+		logger.Info(fmt.Sprintf("Creating %s/%s directory...", homeDir, MainDirName))
 		if err := os.Mkdir(secbutlerDir, 0700); err != nil {
-			logger.Info(fmt.Sprintf("Failed to create %s/%s directory", homeDir, mainDirName))
+			logger.Info(fmt.Sprintf("Failed to create %s/%s directory", homeDir, MainDirName))
 			os.Exit(1)
 		}
 	}
 
 	// Creating payloads dir
 	if _, err := os.Stat(payloadsDir); os.IsNotExist(err) {
-		logger.Info(fmt.Sprintf("Creating %s/%s/%s directory...", homeDir, mainDirName, payloadsDirName))
+		logger.Info(fmt.Sprintf("Creating %s/%s/%s directory...", homeDir, MainDirName, PayloadsDirName))
 		if err := os.Mkdir(payloadsDir, 0700); err != nil {
-			logger.Info(fmt.Sprintf("Failed to create %s/%s/%s directory", homeDir, mainDirName, payloadsDirName))
+			logger.Info(fmt.Sprintf("Failed to create %s/%s/%s directory", homeDir, MainDirName, PayloadsDirName))
 			os.Exit(1)
 		}
 	}

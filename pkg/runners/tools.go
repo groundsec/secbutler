@@ -2,6 +2,8 @@ package runners
 
 import (
 	"fmt"
+	"os"
+	"path/filepath"
 	"strings"
 
 	"github.com/AlecAivazis/survey/v2"
@@ -12,7 +14,9 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-var installScriptTpl = `
+var startInstallScriptTpl = `
+#!/usr/bin/env bash
+
 function banner {
   echo "                   __          __  __"
   echo "   ________  _____/ /_  __  __/ /_/ /__  _____"
@@ -21,9 +25,48 @@ function banner {
   echo "/____/\___/\___/_.___/\__,_/\__/_/\___/_/"	
 }
 
-function log {
-
+function info {
+  echo -e "\e[33m[INFO] $1\e[0m"
 }
+
+function success {
+  echo -e "\e[32m[INFO] $1\e[0m"
+}
+
+function error {
+  echo -e "\e[31m[INFO] $1\e[0m"
+}
+
+function check_tool {
+  if ! command -v $1 &> /dev/null; then
+    error "'$1' not installed (or not in PATH)"
+  else
+    success "'$1' correctly installed"
+  fi
+}
+
+`
+
+var startInstallToolsFunc = "function install_tools {"
+var endInstallToolsFunc = "\n}"
+var startCheckRequiremenstFunc = "function check_requirements {"
+var endCheckRequirementsFunc = `
+  for requirements in ${REQUIREMENTS[@]}; do
+    if ! command -v $requirements &> /dev/null; then
+      error "Requirement $requirement is not installed, impossible to continue installation"
+      exit 1
+    fi
+  done
+}`
+
+var endInstallScriptTpl = `
+function main {
+  banner
+  check_requirements
+  install_tools
+}
+
+main $@
 `
 
 func getGroupedOptions(groupingChoice string) ([]string, error) {
@@ -48,10 +91,8 @@ func getGroupedOptions(groupingChoice string) ([]string, error) {
 }
 
 func generateScript(groupingChoice string, chosenGroups []string) {
-	startInstallToolsFunc := "function install_tools {"
-	endInstallToolsFunc := "\n}"
 	requirements := []string{}
-	installScript := installScriptTpl
+	installScript := startInstallScriptTpl
 	installScript = strings.Join([]string{installScript, startInstallToolsFunc}, "\n")
 
 	// Get list of tools
@@ -76,18 +117,42 @@ func generateScript(groupingChoice string, chosenGroups []string) {
 			}
 			lines = utils.RemoveEmptyStrings(lines)
 			trimmedInstallCmd := strings.Join(lines, "\n")
-			comment := fmt.Sprintf("\n  # Install %s", tool.Name)
-			installScript = strings.Join([]string{installScript, comment, trimmedInstallCmd}, "\n")
+			commentLine := fmt.Sprintf("\n  # Install %s", tool.Name)
+			infoLine := fmt.Sprintf("  info \"Installing %s\"", tool.Name)
+			checkOutputLine := fmt.Sprintf("  check_tool \"%s\"", tool.Name)
+			installScript = strings.Join([]string{installScript, commentLine, infoLine, trimmedInstallCmd, checkOutputLine}, "\n")
 			for _, req := range tool.Requirements {
-				if !slices.Contains(requirements, req) {
-					requirements = append(requirements, req)
+				formattedReq := fmt.Sprintf("\"%s\"", req)
+				if !slices.Contains(requirements, formattedReq) {
+					requirements = append(requirements, formattedReq)
 				}
 			}
 		}
 	}
-	installScript = strings.Join([]string{installScript, endInstallToolsFunc}, "\n")
+	installScript = strings.Join([]string{installScript, "\n\n  log \"Installation completed.\"", endInstallToolsFunc}, "")
 
-	fmt.Println(installScript)
+	// Add check requirements function
+	installScript = strings.Join([]string{installScript, startCheckRequiremenstFunc}, "\n\n")
+
+	requirementsLine := fmt.Sprintf("  REQUIREMENTS=(%s)", strings.Join(requirements, " "))
+	installScript = strings.Join([]string{installScript, requirementsLine, endCheckRequirementsFunc}, "\n")
+
+	installScript = strings.Join([]string{installScript, endInstallScriptTpl}, "\n")
+
+	// Write the content to the file, creating it or overwriting if it already exists.
+	installToolsFilePath := filepath.Join(utils.UserHomeDir(), utils.MainDirName, "install_tools.sh")
+	err := os.WriteFile(installToolsFilePath, []byte(installScript), 0644)
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	// Change the file permissions to make it executable.
+	err = os.Chmod(installToolsFilePath, 0755)
+	if err != nil {
+		logger.Fatal(err)
+	}
+
+	logger.Info(fmt.Sprintf("Script '%s' correctly created. You can run it to install all the selected tools.", installToolsFilePath))
 }
 
 func GenerateToolsInstallScript() {
