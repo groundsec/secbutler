@@ -29,3 +29,4 @@ var ANSICodes = map[string]string{
 
 const MainDirName = ".secbutler"
 const PayloadsDirName = "payloads"
+const ToolsDirName = "tools"

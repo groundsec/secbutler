@@ -52,6 +52,15 @@ func CheckAndCreateSecbutlerDir() {
 			os.Exit(1)
 		}
 	}
+
+	// Creating tools dir
+	if _, err := os.Stat(payloadsDir); os.IsNotExist(err) {
+		logger.Info(fmt.Sprintf("Creating %s/%s/%s directory...", homeDir, MainDirName, ToolsDirName))
+		if err := os.Mkdir(payloadsDir, 0700); err != nil {
+			logger.Info(fmt.Sprintf("Failed to create %s/%s/%s directory", homeDir, MainDirName, ToolsDirName))
+			os.Exit(1)
+		}
+	}
 }
 
 func IsCommandAvailable(name string) bool {

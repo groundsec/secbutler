@@ -22,7 +22,12 @@ function banner {
   echo "   ________  _____/ /_  __  __/ /_/ /__  _____"
   echo "  / ___/ _ \/ ___/ __ \/ / / / __/ / _ \/ ___/"
   echo " (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /"    
-  echo "/____/\___/\___/_.___/\__,_/\__/_/\___/_/"	
+  echo "/____/\___/\___/_.___/\__,_/\__/_/\___/_/"
+  echo ""
+}
+
+function bold {
+  echo -e "\033[1m$1\033[0m"
 }
 
 function info {
@@ -30,11 +35,11 @@ function info {
 }
 
 function success {
-  echo -e "\e[32m[INFO] $1\e[0m"
+  echo -e "\e[32m[SUCC] $1\e[0m"
 }
 
 function error {
-  echo -e "\e[31m[INFO] $1\e[0m"
+  echo -e "\e[31m[ERRO] $1\e[0m"
 }
 
 function check_tool {
@@ -47,22 +52,31 @@ function check_tool {
 
 `
 
-var startInstallToolsFunc = "function install_tools {"
+var startInstallToolsFunc = `function install_tools {
+  bold "Installing tools"`
 var endInstallToolsFunc = "\n}"
-var startCheckRequiremenstFunc = "function check_requirements {"
+var startCheckRequiremenstFunc = `function check_requirements {
+	bold "Checking requirements"	
+`
+
 var endCheckRequirementsFunc = `
-  for requirements in ${REQUIREMENTS[@]}; do
-    if ! command -v $requirements &> /dev/null; then
-      error "Requirement $requirement is not installed, impossible to continue installation"
+  for requirement in ${REQUIREMENTS[@]}; do
+		info "Checking if requirement '$requirement' is installed"
+    if ! command -v $requirement &> /dev/null; then
+      error "Requirement '$requirement' is not installed, impossible to continue installation"
       exit 1
+    else
+      success "Requirement '$requirement' is correctly installed"
     fi
   done
+	echo ""
 }`
 
 var endInstallScriptTpl = `
 function main {
   banner
   check_requirements
+	cd $HOME/.secbutler/tools
   install_tools
 }
 
@@ -129,7 +143,7 @@ func generateScript(groupingChoice string, chosenGroups []string) {
 			}
 		}
 	}
-	installScript = strings.Join([]string{installScript, "\n\n  log \"Installation completed.\"", endInstallToolsFunc}, "")
+	installScript = strings.Join([]string{installScript, "\n\n  success \"Installation completed.\"", endInstallToolsFunc}, "")
 
 	// Add check requirements function
 	installScript = strings.Join([]string{installScript, startCheckRequiremenstFunc}, "\n\n")
