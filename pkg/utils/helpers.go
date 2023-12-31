@@ -8,6 +8,7 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 
 	"github.com/groundsec/secbutler/pkg/logger"
 )
@@ -88,4 +89,15 @@ func GetCurrentIP() (string, error) {
 
 	localAddr := conn.LocalAddr().(*net.UDPAddr)
 	return localAddr.IP.String(), nil
+}
+
+func RemoveEmptyStrings(stringArr []string) []string {
+	nonEmptyLines := []string{}
+	for _, line := range stringArr {
+		trimmedLine := strings.TrimSpace(line)
+		if trimmedLine != "" {
+			nonEmptyLines = append(nonEmptyLines, line)
+		}
+	}
+	return nonEmptyLines
 }

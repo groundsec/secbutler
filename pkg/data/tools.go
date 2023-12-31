@@ -54,8 +54,8 @@ var SecTools = []types.SecTool{
 	},
 	{
 		Name:         "knock",
-		Category:     "",
-		Subcategory:  "",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
 		Requirements: []string{"git", "python3"},
 		InstallCmd: `
 		git clone https://github.com/guelfoweb/knock.git
@@ -167,53 +167,55 @@ var SecTools = []types.SecTool{
 		sandmap
 		`,
 	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
-	{
-		Name:         "",
-		Category:     "",
-		Subcategory:  "",
-		Requirements: []string{},
-		InstallCmd:   ``,
-	},
+	/*
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+		{
+			Name:         "",
+			Category:     "",
+			Subcategory:  "",
+			Requirements: []string{},
+			InstallCmd:   ``,
+		},
+	*/
 }
