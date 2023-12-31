@@ -26,3 +26,7 @@ var ANSICodes = map[string]string{
 	"CyanBackground":    "\033[46m",
 	"WhiteBackground":   "\033[47m",
 }
+
+const MainDirName = ".secbutler"
+const PayloadsDirName = "payloads"
+const ToolsDirName = "tools"
