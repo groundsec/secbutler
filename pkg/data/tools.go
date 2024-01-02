@@ -485,6 +485,52 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"npm"},
 		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
 	},
+	{
+		Name:         "patator",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install patator &> /dev/null`,
+	},
+	{
+		Name:         "creds",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{},
+		InstallCmd:   `pipx install defaultcreds-cheat-sheet &> /dev/null`,
+	},
+	{
+		Name:         "brutex",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{"git"},
+		InstallCmd: `
+		git clone https://github.com/1N3/BruteX.git &> /dev/null
+		cd BruteX
+		chmod +x install.sh
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "hydra",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/vanhauser-thc/thc-hydra.git hydra &> /dev/null
+		cd hydra
+		./configure &> /dev/null
+		make &> /dev/null
+		make install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "csprecon",
+		Category:     "Misc",
+		Subcategory:  "Uncategorized",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/edoardottt/csprecon/cmd/csprecon@latest &> /dev/null`,
+	},
 	/*
 		{
 			Name:         "",
