@@ -803,6 +803,85 @@ var SecTools = []types.SecTool{
 		cd ..`,
 	},
 	{
+		Name:         "nuclei",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest &> /dev/null`,
+	},
+	{
+		Name:         "sniper",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"git", "bash"},
+		InstallCmd: `
+		git clone https://github.com/1N3/Sn1per &> /dev/null
+		cd Sn1per
+		bash install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "msfconsole",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"curl", "bash"},
+		InstallCmd: `
+		curl -s https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+  	chmod 755 msfinstall
+  	./msfinstall  &> /dev/null`,
+	},
+	{
+		Name:         "jaeles",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/jaeles-project/jaeles@latest &> /dev/null`,
+	},
+	{
+		Name:         "osmedeus",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/j3ssie/osmedeus@latest &> /dev/null`,
+	},
+	{
+		Name:         "getsploit",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install getsploit &> /dev/null`,
+	},
+	{
+		Name:         "cariddi",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/edoardottt/cariddi/cmd/cariddi@latest &> /dev/null`,
+	},
+	{
+		Name:         "findsploit",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"git", "bash"},
+		InstallCmd: `
+		git clone https://github.com/1N3/Findsploit &> /dev/null
+		cd Findsploit
+		chmod +x install.sh
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "blackwidow",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"git", "bash"},
+		InstallCmd: `
+		git clone https://github.com/1N3/BlackWidow &> /dev/null
+		cd BlackWidow
+		sudo bash install.sh &> /dev/null
+		cd ..`,
+	},
+	{
 		Name:         "csprecon",
 		Category:     "Misc",
 		Subcategory:  "Uncategorized",
