@@ -727,10 +727,31 @@ var SecTools = []types.SecTool{
 		InstallCmd: `
 		git clone github.com/blackcrw/wpreconx.git &> /dev/null
 		cd wpreconx/cli
-		go build
+		go build &> /dev/null
 		mv cli /usr/local/bin/wprecon
 		cd ../..
 		`,
+	},
+	{
+		Name:         "jwtear",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install jwtear &> /dev/null`,
+	},
+	{
+		Name:         "jwt-hack",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/jwt-hack@latest &> /dev/null`,
+	},
+	{
+		Name:         "jwt-cracker",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install --global jwt-cracker &> /dev/null`,
 	},
 	{
 		Name:         "csprecon",
