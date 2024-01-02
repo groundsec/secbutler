@@ -302,6 +302,32 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"go"},
 		InstallCmd:   `go install -v github.com/riza/linx/cmd/linx@latest`,
 	},
+	{
+		Name:         "arjun",
+		Category:     "Recon",
+		Subcategory:  "Parameters",
+		Requirements: []string{"pip3"},
+		InstallCmd:   `pip3 install arjun`,
+	},
+	{
+		Name:         "paramspider",
+		Category:     "Recon",
+		Subcategory:  "Parameters",
+		Requirements: []string{"git", "pip"},
+		InstallCmd: `
+		git clone https://github.com/devanshbatham/paramspider
+		cd paramspider
+		pip install .
+		cd ..
+		`,
+	},
+	{
+		Name:         "x8",
+		Category:     "Recon",
+		Subcategory:  "Parameters",
+		Requirements: []string{"cargo"},
+		InstallCmd:   `cargo install x8`,
+	},
 	/*
 		{
 			Name:         "",
