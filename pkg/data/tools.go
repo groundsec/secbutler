@@ -56,11 +56,11 @@ var SecTools = []types.SecTool{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/guelfoweb/knock.git &> /dev/null
 		cd knock
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..
 		`,
 	},
@@ -329,11 +329,11 @@ var SecTools = []types.SecTool{
 		Name:         "commix",
 		Category:     "Exploitation",
 		Subcategory:  "Command Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/commixproject/commix.git &> /dev/null
 		cd commix
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -361,11 +361,11 @@ var SecTools = []types.SecTool{
 		Name:         "crlf",
 		Category:     "Exploitation",
 		Subcategory:  "CRLF Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf  &> /dev/null
 		cd crlf
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -379,11 +379,11 @@ var SecTools = []types.SecTool{
 		Name:         "graphqlmap",
 		Category:     "Exploitation",
 		Subcategory:  "GraphQL Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/swisskyrepo/GraphQLmap &> /dev/null
 		cd GraphQLmap
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -397,11 +397,11 @@ var SecTools = []types.SecTool{
 		Name:         "shifter",
 		Category:     "Exploitation",
 		Subcategory:  "GraphQL Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/szski/shapeshifter.git &> /dev/null
 		cd shapeshifter/shapeshifter
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ../..
 		`,
 	},
@@ -471,11 +471,11 @@ var SecTools = []types.SecTool{
 		Name:         "xsser",
 		Category:     "Exploitation",
 		Subcategory:  "XSS",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/epsylon/xsser &> /dev/null
 		cd xsser
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -808,17 +808,6 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Vulnerability Scanners",
 		Requirements: []string{"go"},
 		InstallCmd:   `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest &> /dev/null`,
-	},
-	{
-		Name:         "sniper",
-		Category:     "Misc",
-		Subcategory:  "Vulnerability Scanners",
-		Requirements: []string{"git", "bash"},
-		InstallCmd: `
-		git clone https://github.com/1N3/Sn1per &> /dev/null
-		cd Sn1per
-		bash install.sh &> /dev/null
-		cd ..`,
 	},
 	{
 		Name:         "msfconsole",
