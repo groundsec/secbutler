@@ -323,7 +323,7 @@ var SecTools = []types.SecTool{
 		Category:     "Recon",
 		Subcategory:  "Fuzzing",
 		Requirements: []string{"curl", "sudo", "bash"},
-		InstallCmd:   `curl https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh &> /dev/null | sudo bash &> /dev/null`,
+		InstallCmd:   `curl -s https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash &> /dev/null`,
 	},
 	/*
 		{
