@@ -615,7 +615,7 @@ var SecTools = []types.SecTool{
 		InstallCmd: `
 			git clone https://github.com/praetorian-inc/noseyparker.git &> /dev/null
 			cd noseyparker
-			cargo build --locked --profile release &> /dev/build
+			cargo build --locked --profile release &> /dev/null
 			mv target/release/noseyparker-cli /usr/local/bin/noseyparker
 			cd ..`,
 	},
@@ -758,14 +758,14 @@ var SecTools = []types.SecTool{
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/haccer/subjack@latest &> /dev/build`,
+		InstallCmd:   `go install github.com/haccer/subjack@latest &> /dev/null`,
 	},
 	{
 		Name:         "SubOver",
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest &> /dev/build`,
+		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest &> /dev/null`,
 	},
 	{
 		Name:         "autosubtakeover",
@@ -779,14 +779,14 @@ var SecTools = []types.SecTool{
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/cybercdh/cnames@latest &> /dev/build`,
+		InstallCmd:   `go install github.com/cybercdh/cnames@latest &> /dev/null`,
 	},
 	{
 		Name:         "second-order",
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install -v github.com/mhmdiaa/second-order@latest`,
+		InstallCmd:   `go install -v github.com/mhmdiaa/second-order@latest &> /dev/null`,
 	},
 	{
 		Name:         "takeover",
@@ -794,9 +794,9 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"git", "go"},
 		InstallCmd: `
-		git clone https://github.com/mzfr/takeover.git
+		git clone https://github.com/mzfr/takeover.git &> /dev/null
 		cd takeover
-		go mod init github.com/mzfr/takeover &> /dev/build
+		go mod init github.com/mzfr/takeover &> /dev/null
 		go mod tidy &> /dev/null
 		go build &> /dev/null
 		mv takeover /usr/local/bin
