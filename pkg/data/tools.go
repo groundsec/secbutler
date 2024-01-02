@@ -461,7 +461,7 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/hahwul/dalfox/v2@latest &> /dev/null`,
 	},
 	{
-		Name:         "xspear",
+		Name:         "XSpear",
 		Category:     "Exploitation",
 		Subcategory:  "XSS",
 		Requirements: []string{"gem"},
@@ -477,6 +477,13 @@ var SecTools = []types.SecTool{
 		cd xsser
 		python3 setup.py install &> /dev/null
 		cd ..`,
+	},
+	{
+		Name:         "xxexploiter",
+		Category:     "Exploitation",
+		Subcategory:  "XXE Injection",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
 	},
 	/*
 		{
