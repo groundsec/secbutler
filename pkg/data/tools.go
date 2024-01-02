@@ -250,6 +250,58 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"go"},
 		InstallCmd:   `go install github.com/hakluke/hakrawler@latest`,
 	},
+	{
+		Name:         "linkfinder",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"git", "pip"},
+		InstallCmd: `
+		git clone https://github.com/GerbenJavado/LinkFinder.git
+		cd LinkFinder
+		python3 setup.py install`,
+	},
+	{
+		Name:         "GoLinkFinder",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/0xsha/GoLinkFinder@latest`,
+	},
+	{
+		Name:         "urlgrab",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/iamstoxe/urlgrab@latest`,
+	},
+	{
+		Name:         "waybackurls",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/tomnomnom/waybackurls@latest`,
+	},
+	{
+		Name:         "gau",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/lc/gau/v2/cmd/gau@latest`,
+	},
+	{
+		Name:         "getJS",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/003random/getJS@latest`,
+	},
+	{
+		Name:         "linx",
+		Category:     "Recon",
+		Subcategory:  "Links",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/riza/linx/cmd/linx@latest`,
+	},
 	/*
 		{
 			Name:         "",
