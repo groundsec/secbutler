@@ -42,7 +42,7 @@ This will display the help for the tool
  (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /
 /____/\___/\___/_.___/\__,_/\__/_/\___/_/
 
-v0.1.5 - https://github.com/groundsec/secbutler
+v0.1.6 - https://github.com/groundsec/secbutler
 
 Essential utilities for pentester, bug-bounty hunters and security researchers
 
@@ -71,6 +71,8 @@ Run the following command to install the latest version:
 ```
 go install github.com/groundsec/secbutler@latest
 ```
+
+Or you can simply grab an executable from the [Releases](https://github.com/groundsec/secbutler/releases) page.
 
 ## 🪪 License
 

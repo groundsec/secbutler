@@ -56,11 +56,11 @@ var SecTools = []types.SecTool{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/guelfoweb/knock.git &> /dev/null
 		cd knock
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..
 		`,
 	},
@@ -329,11 +329,11 @@ var SecTools = []types.SecTool{
 		Name:         "commix",
 		Category:     "Exploitation",
 		Subcategory:  "Command Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/commixproject/commix.git &> /dev/null
 		cd commix
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -361,11 +361,11 @@ var SecTools = []types.SecTool{
 		Name:         "crlf",
 		Category:     "Exploitation",
 		Subcategory:  "CRLF Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf  &> /dev/null
 		cd crlf
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -379,11 +379,11 @@ var SecTools = []types.SecTool{
 		Name:         "graphqlmap",
 		Category:     "Exploitation",
 		Subcategory:  "GraphQL Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/swisskyrepo/GraphQLmap &> /dev/null
 		cd GraphQLmap
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -397,11 +397,11 @@ var SecTools = []types.SecTool{
 		Name:         "shifter",
 		Category:     "Exploitation",
 		Subcategory:  "GraphQL Injection",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/szski/shapeshifter.git &> /dev/null
 		cd shapeshifter/shapeshifter
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ../..
 		`,
 	},
@@ -471,11 +471,11 @@ var SecTools = []types.SecTool{
 		Name:         "xsser",
 		Category:     "Exploitation",
 		Subcategory:  "XSS",
-		Requirements: []string{"git", "python3"},
+		Requirements: []string{"git", "python3", "pipx"},
 		InstallCmd: `
 		git clone https://github.com/epsylon/xsser &> /dev/null
 		cd xsser
-		python3 setup.py install &> /dev/null
+		pipx install . &> /dev/null
 		cd ..`,
 	},
 	{
@@ -484,6 +484,398 @@ var SecTools = []types.SecTool{
 		Subcategory:  "XXE Injection",
 		Requirements: []string{"npm"},
 		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
+	},
+	{
+		Name:         "creds",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{},
+		InstallCmd:   `pipx install defaultcreds-cheat-sheet &> /dev/null`,
+	},
+	{
+		Name:         "brutex",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{"git"},
+		InstallCmd: `
+		git clone https://github.com/1N3/BruteX.git &> /dev/null
+		cd BruteX
+		chmod +x install.sh
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "hydra",
+		Category:     "Misc",
+		Subcategory:  "Bruteforce",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/vanhauser-thc/thc-hydra.git hydra &> /dev/null
+		cd hydra
+		./configure &> /dev/null
+		make &> /dev/null
+		make install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "git secrets",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/awslabs/git-secrets.git &> /dev/null
+		cd git-secrets
+		make install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "gitleaks",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/gitleaks/gitleaks.git &> /dev/null
+		cd gitleaks
+		make build &> /dev/null
+		go install . &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "trufflehog",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"curl", "sh"},
+		InstallCmd:   `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin &> /dev/null`,
+	},
+	{
+		Name:         "commit-stream",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/x1sec/commit-stream@latest &> /dev/null`,
+	},
+	{
+		Name:         "shhgit",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/eth0izzle/shhgit@latest &> /dev/null`,
+	},
+	{
+		Name:         "detect-secrets",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install detect-secrets &> /dev/null`,
+	},
+	{
+		Name:         "whispers",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install whispers &> /dev/null`,
+	},
+	{
+		Name:         "yar",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/nielsing/yar@latest &> /dev/null`,
+	},
+	{
+		Name:         "go-earlybird",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git"},
+		InstallCmd: `
+		git clone https://github.com/americanexpress/earlybird.git &> /dev/null
+		cd earlybird
+		./build.sh &> /dev/null
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "ankamali_hog",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"cargo"},
+		InstallCmd: `
+			git clone https://github.com/newrelic/rusty-hog.git &> /dev/null
+			cd rusty-hog
+			cargo build --release &> /dev/null
+			mv target/release/*_hog /usr/local/bin
+			mv target/release/*_hog_lambda /usr/local/bin
+			cd ..`,
+	},
+	{
+		Name:         "noseyparker",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"cargo", "cmake", "git"},
+		InstallCmd: `
+			git clone https://github.com/praetorian-inc/noseyparker.git &> /dev/null
+			cd noseyparker
+			cargo build --locked --profile release &> /dev/null
+			mv target/release/noseyparker-cli /usr/local/bin/noseyparker
+			cd ..`,
+	},
+	{
+		Name:         "gitjacker",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "bash", "jq"},
+		InstallCmd:   `curl -s "https://raw.githubusercontent.com/liamg/gitjacker/master/scripts/install.sh" | bash &> /dev/null`,
+	},
+	{
+		Name:         "git-dumper",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install git-dumper &> /dev/null`,
+	},
+	{
+		Name:         "GitHunter",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "go"},
+		InstallCmd: `
+		git clone https://github.com/digininja/GitHunter &> /dev/null
+		cd GitHunter
+		go build &> /dev/null
+		mv GitHunter /usr/local/bin
+		cd ..`,
+	},
+	{
+		Name:         "gato",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "pipx"},
+		InstallCmd: `
+		git clone https://github.com/praetorian-inc/gato &> /dev/null
+		cd gato
+		pipx install . &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "s3scanner",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/sa7mon/s3scanner@latest &> /dev/null`,
+	},
+	{
+		Name:         "festin",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install festin &> /dev/null`,
+	},
+	{
+		Name:         "s3reverse",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/s3reverse@latest &> /dev/null`,
+	},
+	{
+		Name:         "dirlstr",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cybercdh/dirlstr@latest &> /dev/null`,
+	},
+	{
+		Name:         "kicks3.py",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install kick-s3 &> /dev/null`,
+	},
+	{
+		Name:         "2tearsinabucket",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Revenant40/2tearsinabucket@latest &> /dev/null`,
+	},
+	{
+		Name:         "s3tk",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install s3tk &> /dev/null`,
+	},
+	{
+		Name:         "cloudbrute",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/0xsha/cloudbrute@latest &> /dev/null`,
+	},
+	{
+		Name:         "wpscan",
+		Category:     "Misc",
+		Subcategory:  "CMS",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install wpscan &> /dev/null`,
+	},
+	{
+		Name:         "wprecon",
+		Category:     "Misc",
+		Subcategory:  "CMS",
+		Requirements: []string{"go"},
+		InstallCmd: `
+		git clone https://github.com/blackcrw/wpreconx.git &> /dev/null
+		cd wpreconx/cli
+		go build &> /dev/null
+		mv cli /usr/local/bin/wprecon
+		cd ../..
+		`,
+	},
+	{
+		Name:         "jwtear",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install jwtear &> /dev/null`,
+	},
+	{
+		Name:         "jwt-hack",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/jwt-hack@latest &> /dev/null`,
+	},
+	{
+		Name:         "jwt-cracker",
+		Category:     "Misc",
+		Subcategory:  "JWT",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install --global jwt-cracker &> /dev/null`,
+	},
+	{
+		Name:         "subjack",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/haccer/subjack@latest &> /dev/null`,
+	},
+	{
+		Name:         "SubOver",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest &> /dev/null`,
+	},
+	{
+		Name:         "autosubtakeover",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install autosubtakeover &> /dev/null`,
+	},
+	{
+		Name:         "cnames",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cybercdh/cnames@latest &> /dev/null`,
+	},
+	{
+		Name:         "second-order",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/mhmdiaa/second-order@latest &> /dev/null`,
+	},
+	{
+		Name:         "takeover",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"git", "go"},
+		InstallCmd: `
+		git clone https://github.com/mzfr/takeover.git &> /dev/null
+		cd takeover
+		go mod init github.com/mzfr/takeover &> /dev/null
+		go mod tidy &> /dev/null
+		go build &> /dev/null
+		mv takeover /usr/local/bin
+		cd ..`,
+	},
+	{
+		Name:         "nuclei",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest &> /dev/null`,
+	},
+	{
+		Name:         "msfconsole",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"curl", "bash"},
+		InstallCmd: `
+		curl -s https://raw.githubusercontent.com/rapid7/metasploit-omnibus/master/config/templates/metasploit-framework-wrappers/msfupdate.erb > msfinstall
+  	chmod 755 msfinstall
+  	./msfinstall  &> /dev/null`,
+	},
+	{
+		Name:         "jaeles",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/jaeles-project/jaeles@latest &> /dev/null`,
+	},
+	{
+		Name:         "osmedeus",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/j3ssie/osmedeus@latest &> /dev/null`,
+	},
+	{
+		Name:         "getsploit",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install getsploit &> /dev/null`,
+	},
+	{
+		Name:         "cariddi",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/edoardottt/cariddi/cmd/cariddi@latest &> /dev/null`,
+	},
+	{
+		Name:         "findsploit",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"git", "bash"},
+		InstallCmd: `
+		git clone https://github.com/1N3/Findsploit &> /dev/null
+		cd Findsploit
+		chmod +x install.sh
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "blackwidow",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"git", "bash"},
+		InstallCmd: `
+		git clone https://github.com/1N3/BlackWidow &> /dev/null
+		cd BlackWidow
+		sudo bash install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "csprecon",
+		Category:     "Misc",
+		Subcategory:  "Uncategorized",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/edoardottt/csprecon/cmd/csprecon@latest &> /dev/null`,
 	},
 	/*
 		{
