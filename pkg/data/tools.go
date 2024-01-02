@@ -421,21 +421,62 @@ var SecTools = []types.SecTool{
 		git clone https://github.com/devanshbatham/openredirex &> /dev/null
 		cd openredirex
 		sudo chmod +x setup.sh
-		./setup.sh
+		./setup.sh &> /dev/null
 		cd ..
 `,
 	},
 	{
-		Name:         "requests-racer",
+		Name:         "lorsrf",
 		Category:     "Exploitation",
-		Subcategory:  "Race Condition",
-		Requirements: []string{},
+		Subcategory:  "SSRF",
+		Requirements: []string{"cargo"},
+		InstallCmd:   `cargo install --git https://github.com/knassar702/lorsrf &> /dev/null`,
+	},
+	{
+		Name:         "whonow",
+		Category:     "Exploitation",
+		Subcategory:  "SSRF",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install --cli -g whonow@latest &> /dev/null`,
+	},
+	{
+		Name:         "sqlmap",
+		Category:     "Exploitation",
+		Subcategory:  "SQL Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install sqlmap &> /dev/null`,
+	},
+	{
+		Name:         "nosqli",
+		Category:     "Exploitation",
+		Subcategory:  "SQL Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Charlie-belmer/nosqli@latest &> /dev/null`,
+	},
+	{
+		Name:         "dalfox",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/dalfox/v2@latest &> /dev/null`,
+	},
+	{
+		Name:         "xspear",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install XSpear &> /dev/null`,
+	},
+	{
+		Name:         "xsser",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"git", "python3"},
 		InstallCmd: `
-		git clone https://github.com/nccgroup/requests-racer.git &> /dev/null
-		cd requests-racer
-		python setup.py install &> /dev/null
-		cd ..
-		`,
+		git clone https://github.com/epsylon/xsser &> /dev/null
+		cd xsser
+		python3 setup.py install &> /dev/null
+		cd ..`,
 	},
 	/*
 		{
