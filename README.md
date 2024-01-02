@@ -72,6 +72,8 @@ Run the following command to install the latest version:
 go install github.com/groundsec/secbutler@latest
 ```
 
+Or you can simply grab an executable from the [Releases](https://github.com/groundsec/secbutler/releases) page.
+
 ## 🪪 License
 
 _secbutler_ is made with 🖤 by the [GroundSec](https://groundsec.io) team and released under the [MIT LICENSE](https://github.com/groundsec/secbutler/blob/main/LICENSE).
