@@ -642,6 +642,7 @@ var SecTools = []types.SecTool{
 		git clone https://github.com/digininja/GitHunter &> /dev/null
 		cd GitHunter
 		go build &> /dev/null
+		mv GitHunter /usr/local/bin
 		cd ..`,
 	},
 	{
@@ -654,6 +655,82 @@ var SecTools = []types.SecTool{
 		cd gato
 		pipx install . &> /dev/null
 		cd ..`,
+	},
+	{
+		Name:         "s3scanner",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/sa7mon/s3scanner@latest &> /dev/null`,
+	},
+	{
+		Name:         "festin",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install festin &> /dev/null`,
+	},
+	{
+		Name:         "s3reverse",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/s3reverse@latest &> /dev/null`,
+	},
+	{
+		Name:         "dirlstr",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cybercdh/dirlstr@latest &> /dev/null`,
+	},
+	{
+		Name:         "kicks3.py",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install kick-s3 &> /dev/null`,
+	},
+	{
+		Name:         "2tearsinabucket",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Revenant40/2tearsinabucket@latest &> /dev/null`,
+	},
+	{
+		Name:         "s3tk",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install s3tk &> /dev/null`,
+	},
+	{
+		Name:         "cloudbrute",
+		Category:     "Misc",
+		Subcategory:  "Buckets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/0xsha/cloudbrute@latest &> /dev/null`,
+	},
+	{
+		Name:         "wpscan",
+		Category:     "Misc",
+		Subcategory:  "CMS",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install wpscan &> /dev/null`,
+	},
+	{
+		Name:         "wprecon",
+		Category:     "Misc",
+		Subcategory:  "CMS",
+		Requirements: []string{"go"},
+		InstallCmd: `
+		git clone github.com/blackcrw/wpreconx.git &> /dev/null
+		cd wpreconx/cli
+		go build
+		mv cli /usr/local/bin/wprecon
+		cd ../..
+		`,
 	},
 	{
 		Name:         "csprecon",
