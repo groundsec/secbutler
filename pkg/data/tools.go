@@ -331,9 +331,9 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Command Injection",
 		Requirements: []string{"git", "python3"},
 		InstallCmd: `
-		git clone https://github.com/commixproject/commix.git
+		git clone https://github.com/commixproject/commix.git &> /dev/null
 		cd commix
-		python3 setup.py install
+		python3 setup.py install &> /dev/null
 		cd ..`,
 	},
 	{
@@ -341,21 +341,21 @@ var SecTools = []types.SecTool{
 		Category:     "Exploitation",
 		Subcategory:  "CORS Misconfiguration",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/shivangx01b/CorsMe@latest`,
+		InstallCmd:   `go install github.com/shivangx01b/CorsMe@latest &> /dev/null`,
 	},
 	{
 		Name:         "crlfsuite",
 		Category:     "Exploitation",
 		Subcategory:  "CRLF Injection",
 		Requirements: []string{"pipx"},
-		InstallCmd:   `pipx install crlfsuite`,
+		InstallCmd:   `pipx install crlfsuite &> /dev/null`,
 	},
 	{
 		Name:         "crlfuzz",
 		Category:     "Exploitation",
 		Subcategory:  "CRLF Injection",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest`,
+		InstallCmd:   `go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest &> /dev/null`,
 	},
 	{
 		Name:         "crlf",
@@ -363,9 +363,9 @@ var SecTools = []types.SecTool{
 		Subcategory:  "CRLF Injection",
 		Requirements: []string{"git", "python3"},
 		InstallCmd: `
-		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf
+		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf  &> /dev/null
 		cd crlf
-		python3 setup.py install
+		python3 setup.py install &> /dev/null
 		cd ..`,
 	},
 	{
@@ -373,7 +373,37 @@ var SecTools = []types.SecTool{
 		Category:     "Exploitation",
 		Subcategory:  "CSRF Injection",
 		Requirements: []string{"pipx"},
-		InstallCmd:   `pipx install xsrfprobe`,
+		InstallCmd:   `pipx install xsrfprobe &> /dev/null`,
+	},
+	{
+		Name:         "graphqlmap",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/swisskyrepo/GraphQLmap &> /dev/null
+		cd GraphQLmap
+		python3 setup.py install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "clairvoyance",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install clairvoyance &> /dev/null`,
+	},
+	{
+		Name:         "shapeshifter",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/szski/shapeshifter.git &> /dev/null
+		cd shapeshifter/shapeshifter
+		python3 setup.py install &> /dev/null
+		cd ../..
+		`,
 	},
 	/*
 		{
