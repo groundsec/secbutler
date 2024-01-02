@@ -28,15 +28,15 @@ var SecTools = []types.SecTool{
 		Name:         "as3nt",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
-		Requirements: []string{"python3", "pip"},
-		InstallCmd:   `pip install as3nt &> /dev/null`,
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install as3nt &> /dev/null`,
 	},
 	{
 		Name:         "altdns",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
-		Requirements: []string{"python3", "pip3"},
-		InstallCmd:   `pip3 install py-altdns==1.0.2 &> /dev/null`,
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install py-altdns==1.0.2 &> /dev/null`,
 	},
 	{
 		Name:         "dnsx",
@@ -160,28 +160,21 @@ var SecTools = []types.SecTool{
 		Category:     "Recon",
 		Subcategory:  "Screenshots",
 		Requirements: []string{"npm"},
-		InstallCmd:   `npm i -g screenshoteer`,
+		InstallCmd:   `npm i -g screenshoteer &> /dev/null`,
 	},
 	{
 		Name:         "gowitness",
 		Category:     "Recon",
 		Subcategory:  "Screenshots",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/sensepost/gowitness@latest`,
-	},
-	{
-		Name:         "witnessme",
-		Category:     "Recon",
-		Subcategory:  "Screenshots",
-		Requirements: []string{"pip"},
-		InstallCmd:   `pip install witnessme`,
+		InstallCmd:   `go install github.com/sensepost/gowitness@latest &> /dev/null`,
 	},
 	{
 		Name:         "webanalyze",
 		Category:     "Recon",
 		Subcategory:  "Technologies",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install -v github.com/rverton/webanalyze/cmd/webanalyze@latest`,
+		InstallCmd:   `go install -v github.com/rverton/webanalyze/cmd/webanalyze@latest &> /dev/null`,
 	},
 	{
 		Name:         "whatweb",
@@ -189,9 +182,9 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Technologies",
 		Requirements: []string{"git", "make"},
 		InstallCmd: `
-		git clone https://github.com/urbanadventurer/WhatWeb.git
+		git clone https://github.com/urbanadventurer/WhatWeb.git &> /dev/null
 		cd WhatWeb
-		make install
+		make install &> /dev/null
 		cd ..`,
 	},
 	{
@@ -199,125 +192,108 @@ var SecTools = []types.SecTool{
 		Category:     "Recon",
 		Subcategory:  "Technologies",
 		Requirements: []string{"npm"},
-		InstallCmd:   `npm i -g retire`,
+		InstallCmd:   `npm i -g retire &> /dev/null`,
 	},
 	{
 		Name:         "httpx",
 		Category:     "Recon",
 		Subcategory:  "Technologies",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest`,
+		InstallCmd:   `go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest &> /dev/null`,
 	},
 	{
 		Name:         "fingerprintx",
 		Category:     "Recon",
 		Subcategory:  "Technologies",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/praetorian-inc/fingerprintx/cmd/fingerprintx@latest`,
+		InstallCmd:   `go install github.com/praetorian-inc/fingerprintx/cmd/fingerprintx@latest &> /dev/null`,
 	},
 	{
 		Name:         "gobuster",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/OJ/gobuster/v3@latest`,
+		InstallCmd:   `go install github.com/OJ/gobuster/v3@latest &> /dev/null`,
 	},
 	{
 		Name:         "feroxbuster",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
 		Requirements: []string{"cargo"},
-		InstallCmd:   `cargo install feroxbuster`,
+		InstallCmd:   `cargo install feroxbuster &> /dev/null`,
 	},
 	{
 		Name:         "dirsearch",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
-		Requirements: []string{"pip"},
-		InstallCmd:   `pip install dirsearch`,
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install dirsearch &> /dev/null`,
 	},
 	{
 		Name:         "gospider",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/jaeles-project/gospider@latest`,
+		InstallCmd:   `go install github.com/jaeles-project/gospider@latest &> /dev/null`,
 	},
 	{
 		Name:         "hakrawler",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/hakluke/hakrawler@latest`,
-	},
-	{
-		Name:         "linkfinder",
-		Category:     "Recon",
-		Subcategory:  "Links",
-		Requirements: []string{"git", "pip"},
-		InstallCmd: `
-		git clone https://github.com/GerbenJavado/LinkFinder.git
-		cd LinkFinder
-		python3 setup.py install`,
+		InstallCmd:   `go install github.com/hakluke/hakrawler@latest &> /dev/null`,
 	},
 	{
 		Name:         "GoLinkFinder",
 		Category:     "Recon",
 		Subcategory:  "Links",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/0xsha/GoLinkFinder@latest`,
-	},
-	{
-		Name:         "urlgrab",
-		Category:     "Recon",
-		Subcategory:  "Links",
-		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/iamstoxe/urlgrab@latest`,
+		InstallCmd:   `go install github.com/0xsha/GoLinkFinder@latest &> /dev/null`,
 	},
 	{
 		Name:         "waybackurls",
 		Category:     "Recon",
 		Subcategory:  "Links",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/tomnomnom/waybackurls@latest`,
+		InstallCmd:   `go install github.com/tomnomnom/waybackurls@latest &> /dev/null`,
 	},
 	{
 		Name:         "gau",
 		Category:     "Recon",
 		Subcategory:  "Links",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/lc/gau/v2/cmd/gau@latest`,
+		InstallCmd:   `go install github.com/lc/gau/v2/cmd/gau@latest &> /dev/null`,
 	},
 	{
 		Name:         "getJS",
 		Category:     "Recon",
 		Subcategory:  "Links",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/003random/getJS@latest`,
+		InstallCmd:   `go install github.com/003random/getJS@latest &> /dev/null`,
 	},
 	{
 		Name:         "linx",
 		Category:     "Recon",
 		Subcategory:  "Links",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install -v github.com/riza/linx/cmd/linx@latest`,
+		InstallCmd:   `go install -v github.com/riza/linx/cmd/linx@latest &> /dev/null`,
 	},
 	{
 		Name:         "arjun",
 		Category:     "Recon",
 		Subcategory:  "Parameters",
-		Requirements: []string{"pip3"},
-		InstallCmd:   `pip3 install arjun`,
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install arjun &> /dev/null`,
 	},
 	{
 		Name:         "paramspider",
 		Category:     "Recon",
 		Subcategory:  "Parameters",
-		Requirements: []string{"git", "pip"},
+		Requirements: []string{"git", "pipx"},
 		InstallCmd: `
-		git clone https://github.com/devanshbatham/paramspider
+		git clone https://github.com/devanshbatham/paramspider &> /dev/null
 		cd paramspider
-		pip install .
+		pipx install . &> /dev/null
 		cd ..
 		`,
 	},
@@ -326,35 +302,28 @@ var SecTools = []types.SecTool{
 		Category:     "Recon",
 		Subcategory:  "Parameters",
 		Requirements: []string{"cargo"},
-		InstallCmd:   `cargo install x8`,
-	},
-	{
-		Name:         "wfuzz",
-		Category:     "Recon",
-		Subcategory:  "Fuzzing",
-		Requirements: []string{"pip"},
-		InstallCmd:   `pip install wfuzz`,
+		InstallCmd:   `cargo install x8 &> /dev/null`,
 	},
 	{
 		Name:         "ffuf",
 		Category:     "Recon",
 		Subcategory:  "Fuzzing",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/ffuf/ffuf/v2@latest`,
+		InstallCmd:   `go install github.com/ffuf/ffuf/v2@latest &> /dev/null`,
 	},
 	{
 		Name:         "qsfuzz",
 		Category:     "Recon",
 		Subcategory:  "Fuzzing",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/ameenmaali/qsfuzz@latest`,
+		InstallCmd:   `go install github.com/ameenmaali/qsfuzz@latest &> /dev/null`,
 	},
 	{
 		Name:         "vaf",
 		Category:     "Recon",
 		Subcategory:  "Fuzzing",
 		Requirements: []string{"curl", "sudo", "bash"},
-		InstallCmd:   `curl https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash`,
+		InstallCmd:   `curl https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh &> /dev/null | sudo bash &> /dev/null`,
 	},
 	/*
 		{
