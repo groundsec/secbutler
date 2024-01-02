@@ -486,13 +486,6 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
 	},
 	{
-		Name:         "patator",
-		Category:     "Misc",
-		Subcategory:  "Bruteforce",
-		Requirements: []string{"pipx"},
-		InstallCmd:   `pipx install patator &> /dev/null`,
-	},
-	{
 		Name:         "creds",
 		Category:     "Misc",
 		Subcategory:  "Bruteforce",
@@ -523,6 +516,54 @@ var SecTools = []types.SecTool{
 		make &> /dev/null
 		make install &> /dev/null
 		cd ..`,
+	},
+	{
+		Name:         "git secrets",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/awslabs/git-secrets.git &> /dev/null
+		cd git-secrets
+		make install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "gitleaks",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/gitleaks/gitleaks.git &> /dev/null
+		cd gitleaks
+		make build &> /dev/null
+		cd ..
+`,
+	},
+	{
+		Name:         "trufflehog",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"curl", "sh"},
+		InstallCmd:   `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin &> /dev/null`,
+	},
+	{
+		Name:         "git-vuln-finder",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git", "pipx"},
+		InstallCmd: `
+		git clone https://github.com/cve-search/git-vuln-finder.git &> /dev/null
+		cd git-vuln-finder 
+		pipx install .
+		`,
+	},
+	{
+		Name:         "commit-stream",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/x1sec/commit-stream@latest &> /dev/null`,
 	},
 	{
 		Name:         "csprecon",
