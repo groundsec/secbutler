@@ -623,7 +623,7 @@ var SecTools = []types.SecTool{
 		Name:         "gitjacker",
 		Category:     "Misc",
 		Subcategory:  "Git",
-		Requirements: []string{"git", "bash"},
+		Requirements: []string{"git", "bash", "jq"},
 		InstallCmd:   `curl -s "https://raw.githubusercontent.com/liamg/gitjacker/master/scripts/install.sh" | bash &> /dev/null`,
 	},
 	{
@@ -725,7 +725,7 @@ var SecTools = []types.SecTool{
 		Subcategory:  "CMS",
 		Requirements: []string{"go"},
 		InstallCmd: `
-		git clone github.com/blackcrw/wpreconx.git &> /dev/null
+		git clone https://github.com/blackcrw/wpreconx.git &> /dev/null
 		cd wpreconx/cli
 		go build &> /dev/null
 		mv cli /usr/local/bin/wprecon

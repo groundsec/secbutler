@@ -18,6 +18,7 @@ RUN apt-get install -y \
   python3-pip \
   wget \
   curl \
+  jq \
   libpcap-dev \
   pipx \
   ruby-full
