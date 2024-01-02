@@ -325,6 +325,56 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"curl", "sudo", "bash"},
 		InstallCmd:   `curl -s https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash &> /dev/null`,
 	},
+	{
+		Name:         "commix",
+		Category:     "Exploitation",
+		Subcategory:  "Command Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/commixproject/commix.git
+		cd commix
+		python3 setup.py install
+		cd ..`,
+	},
+	{
+		Name:         "CorsMe",
+		Category:     "Exploitation",
+		Subcategory:  "CORS Misconfiguration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/shivangx01b/CorsMe@latest`,
+	},
+	{
+		Name:         "crlfsuite",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install crlfsuite`,
+	},
+	{
+		Name:         "crlfuzz",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest`,
+	},
+	{
+		Name:         "crlf",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf
+		cd crlf
+		python3 setup.py install
+		cd ..`,
+	},
+	{
+		Name:         "xsrfprobe",
+		Category:     "Exploitation",
+		Subcategory:  "CSRF Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install xsrfprobe`,
+	},
 	/*
 		{
 			Name:         "",
