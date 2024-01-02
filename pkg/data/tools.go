@@ -537,8 +537,8 @@ var SecTools = []types.SecTool{
 		git clone https://github.com/gitleaks/gitleaks.git &> /dev/null
 		cd gitleaks
 		make build &> /dev/null
-		cd ..
-`,
+		go install . &> /dev/null
+		cd ..`,
 	},
 	{
 		Name:         "trufflehog",
@@ -546,17 +546,6 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Secrets",
 		Requirements: []string{"curl", "sh"},
 		InstallCmd:   `curl -sSfL https://raw.githubusercontent.com/trufflesecurity/trufflehog/main/scripts/install.sh | sh -s -- -b /usr/local/bin &> /dev/null`,
-	},
-	{
-		Name:         "git-vuln-finder",
-		Category:     "Misc",
-		Subcategory:  "Secrets",
-		Requirements: []string{"git", "pipx"},
-		InstallCmd: `
-		git clone https://github.com/cve-search/git-vuln-finder.git &> /dev/null
-		cd git-vuln-finder 
-		pipx install .
-		`,
 	},
 	{
 		Name:         "commit-stream",
