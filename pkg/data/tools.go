@@ -328,6 +328,34 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"cargo"},
 		InstallCmd:   `cargo install x8`,
 	},
+	{
+		Name:         "wfuzz",
+		Category:     "Recon",
+		Subcategory:  "Fuzzing",
+		Requirements: []string{"pip"},
+		InstallCmd:   `pip install wfuzz`,
+	},
+	{
+		Name:         "ffuf",
+		Category:     "Recon",
+		Subcategory:  "Fuzzing",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/ffuf/ffuf/v2@latest`,
+	},
+	{
+		Name:         "qsfuzz",
+		Category:     "Recon",
+		Subcategory:  "Fuzzing",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/ameenmaali/qsfuzz@latest`,
+	},
+	{
+		Name:         "vaf",
+		Category:     "Recon",
+		Subcategory:  "Fuzzing",
+		Requirements: []string{"curl", "sudo", "bash"},
+		InstallCmd:   `curl https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash`,
+	},
 	/*
 		{
 			Name:         "",
