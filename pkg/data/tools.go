@@ -555,6 +555,107 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/x1sec/commit-stream@latest &> /dev/null`,
 	},
 	{
+		Name:         "shhgit",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/eth0izzle/shhgit@latest &> /dev/null`,
+	},
+	{
+		Name:         "detect-secrets",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install detect-secrets &> /dev/null`,
+	},
+	{
+		Name:         "whispers",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install whispers &> /dev/null`,
+	},
+	{
+		Name:         "yar",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/nielsing/yar@latest &> /dev/null`,
+	},
+	{
+		Name:         "go-earlybird",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"git"},
+		InstallCmd: `
+		git clone https://github.com/americanexpress/earlybird.git &> /dev/null
+		cd earlybird
+		./build.sh &> /dev/null
+		./install.sh &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "ankamali_hog",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"cargo"},
+		InstallCmd: `
+			git clone https://github.com/newrelic/rusty-hog.git &> /dev/null
+			cd rusty-hog
+			cargo build --release &> /dev/null
+			mv target/release/*_hog /usr/local/bin
+			mv target/release/*_hog_lambda /usr/local/bin
+			cd ..`,
+	},
+	{
+		Name:         "noseyparker",
+		Category:     "Misc",
+		Subcategory:  "Secrets",
+		Requirements: []string{"cargo", "cmake", "git"},
+		InstallCmd: `
+			git clone https://github.com/praetorian-inc/noseyparker.git &> /dev/null
+			cd noseyparker
+			cargo build --locked --profile release
+			mv target/release/noseyparker-cli /usr/local/bin/noseyparker
+			cd ..`,
+	},
+	{
+		Name:         "gitjacker",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "bash"},
+		InstallCmd:   `curl -s "https://raw.githubusercontent.com/liamg/gitjacker/master/scripts/install.sh" | bash &> /dev/null`,
+	},
+	{
+		Name:         "git-dumper",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install git-dumper &> /dev/null`,
+	},
+	{
+		Name:         "GitHunter",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "go"},
+		InstallCmd: `
+		git clone https://github.com/digininja/GitHunter &> /dev/null
+		cd GitHunter
+		go build &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "gato",
+		Category:     "Misc",
+		Subcategory:  "Git",
+		Requirements: []string{"git", "pipx"},
+		InstallCmd: `
+		git clone https://github.com/praetorian-inc/gato &> /dev/null
+		cd gato
+		pipx install . &> /dev/null
+		cd ..`,
+	},
+	{
 		Name:         "csprecon",
 		Category:     "Misc",
 		Subcategory:  "Uncategorized",
