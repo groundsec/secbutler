@@ -615,7 +615,7 @@ var SecTools = []types.SecTool{
 		InstallCmd: `
 			git clone https://github.com/praetorian-inc/noseyparker.git &> /dev/null
 			cd noseyparker
-			cargo build --locked --profile release
+			cargo build --locked --profile release &> /dev/build
 			mv target/release/noseyparker-cli /usr/local/bin/noseyparker
 			cd ..`,
 	},
@@ -758,14 +758,14 @@ var SecTools = []types.SecTool{
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/haccer/subjack@latest`,
+		InstallCmd:   `go install github.com/haccer/subjack@latest &> /dev/build`,
 	},
 	{
 		Name:         "SubOver",
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest`,
+		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest &> /dev/build`,
 	},
 	{
 		Name:         "autosubtakeover",
@@ -775,11 +775,11 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `pipx install autosubtakeover &> /dev/null`,
 	},
 	{
-		Name:         "cnamess",
+		Name:         "cnames",
 		Category:     "Misc",
 		Subcategory:  "Subdomain Takeover",
 		Requirements: []string{"go"},
-		InstallCmd:   `go install github.com/cybercdh/cnames@latest`,
+		InstallCmd:   `go install github.com/cybercdh/cnames@latest &> /dev/build`,
 	},
 	{
 		Name:         "second-order",
