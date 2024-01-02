@@ -215,6 +215,41 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"go"},
 		InstallCmd:   `go install github.com/praetorian-inc/fingerprintx/cmd/fingerprintx@latest`,
 	},
+	{
+		Name:         "gobuster",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/OJ/gobuster/v3@latest`,
+	},
+	{
+		Name:         "feroxbuster",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"cargo"},
+		InstallCmd:   `cargo install feroxbuster`,
+	},
+	{
+		Name:         "dirsearch",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"pip"},
+		InstallCmd:   `pip install dirsearch`,
+	},
+	{
+		Name:         "gospider",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/jaeles-project/gospider@latest`,
+	},
+	{
+		Name:         "hakrawler",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hakluke/hakrawler@latest`,
+	},
 	/*
 		{
 			Name:         "",
