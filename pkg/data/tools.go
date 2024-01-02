@@ -79,19 +79,6 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install -v github.com/tomnomnom/assetfinder@latest &> /dev/null`,
 	},
 	{
-		Name:         "vhostscan",
-		Category:     "Recon",
-		Subcategory:  "Subdomain Enumeration",
-		Requirements: []string{"git", "python3"},
-		InstallCmd: `
-		git clone https://github.com/codingo/VHostScan.git &> /dev/null
-		cd VHostScan
-		pip install numpy==1.12.0 &> /dev/null
-		python3 setup.py install &> /dev/null
-		cd ..
-		`,
-	},
-	{
 		Name:         "scilla",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
@@ -167,6 +154,66 @@ var SecTools = []types.SecTool{
 		cd sandmap
 		./setup.sh install &> /dev/null
 		`,
+	},
+	{
+		Name:         "screenshoteer",
+		Category:     "Recon",
+		Subcategory:  "Screenshots",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm i -g screenshoteer`,
+	},
+	{
+		Name:         "gowitness",
+		Category:     "Recon",
+		Subcategory:  "Screenshots",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/sensepost/gowitness@latest`,
+	},
+	{
+		Name:         "witnessme",
+		Category:     "Recon",
+		Subcategory:  "Screenshots",
+		Requirements: []string{"pip"},
+		InstallCmd:   `pip install witnessme`,
+	},
+	{
+		Name:         "webanalyze",
+		Category:     "Recon",
+		Subcategory:  "Technologies",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/rverton/webanalyze/cmd/webanalyze@latest`,
+	},
+	{
+		Name:         "whatweb",
+		Category:     "Recon",
+		Subcategory:  "Technologies",
+		Requirements: []string{"git", "make"},
+		InstallCmd: `
+		git clone https://github.com/urbanadventurer/WhatWeb.git
+		cd WhatWeb
+		make install
+		cd ..`,
+	},
+	{
+		Name:         "retire",
+		Category:     "Recon",
+		Subcategory:  "Technologies",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm i -g retire`,
+	},
+	{
+		Name:         "httpx",
+		Category:     "Recon",
+		Subcategory:  "Technologies",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest`,
+	},
+	{
+		Name:         "fingerprintx",
+		Category:     "Recon",
+		Subcategory:  "Technologies",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/praetorian-inc/fingerprintx/cmd/fingerprintx@latest`,
 	},
 	/*
 		{
