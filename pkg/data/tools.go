@@ -754,6 +754,55 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `npm install --global jwt-cracker &> /dev/null`,
 	},
 	{
+		Name:         "subjack",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/haccer/subjack@latest`,
+	},
+	{
+		Name:         "SubOver",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Ice3man543/SubOver@latest`,
+	},
+	{
+		Name:         "autosubtakeover",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install autosubtakeover &> /dev/null`,
+	},
+	{
+		Name:         "cnamess",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cybercdh/cnames@latest`,
+	},
+	{
+		Name:         "second-order",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/mhmdiaa/second-order@latest`,
+	},
+	{
+		Name:         "takeover",
+		Category:     "Misc",
+		Subcategory:  "Subdomain Takeover",
+		Requirements: []string{"git", "go"},
+		InstallCmd: `
+		git clone https://github.com/mzfr/takeover.git
+		cd takeover
+		go mod init github.com/mzfr/takeover &> /dev/build
+		go mod tidy &> /dev/null
+		go build &> /dev/null
+		mv takeover /usr/local/bin
+		cd ..`,
+	},
+	{
 		Name:         "csprecon",
 		Category:     "Misc",
 		Subcategory:  "Uncategorized",
