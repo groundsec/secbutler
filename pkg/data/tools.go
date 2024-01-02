@@ -325,6 +325,166 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"curl", "sudo", "bash"},
 		InstallCmd:   `curl -s https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash &> /dev/null`,
 	},
+	{
+		Name:         "commix",
+		Category:     "Exploitation",
+		Subcategory:  "Command Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/commixproject/commix.git &> /dev/null
+		cd commix
+		python3 setup.py install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "CorsMe",
+		Category:     "Exploitation",
+		Subcategory:  "CORS Misconfiguration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/shivangx01b/CorsMe@latest &> /dev/null`,
+	},
+	{
+		Name:         "crlfsuite",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install crlfsuite &> /dev/null`,
+	},
+	{
+		Name:         "crlfuzz",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/dwisiswant0/crlfuzz/cmd/crlfuzz@latest &> /dev/null`,
+	},
+	{
+		Name:         "crlf",
+		Category:     "Exploitation",
+		Subcategory:  "CRLF Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/MichaelStott/CRLF-Injection-Scanner.git crlf  &> /dev/null
+		cd crlf
+		python3 setup.py install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "xsrfprobe",
+		Category:     "Exploitation",
+		Subcategory:  "CSRF Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install xsrfprobe &> /dev/null`,
+	},
+	{
+		Name:         "graphqlmap",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/swisskyrepo/GraphQLmap &> /dev/null
+		cd GraphQLmap
+		python3 setup.py install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "clairvoyance",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install clairvoyance &> /dev/null`,
+	},
+	{
+		Name:         "shifter",
+		Category:     "Exploitation",
+		Subcategory:  "GraphQL Injection",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/szski/shapeshifter.git &> /dev/null
+		cd shapeshifter/shapeshifter
+		python3 setup.py install &> /dev/null
+		cd ../..
+		`,
+	},
+	{
+		Name:         "headi",
+		Category:     "Exploitation",
+		Subcategory:  "Header Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/mlcsec/headi@latest &> /dev/null`,
+	},
+	{
+		Name:         "openredirex",
+		Category:     "Exploitation",
+		Subcategory:  "Open Redirect",
+		Requirements: []string{},
+		InstallCmd: `
+		git clone https://github.com/devanshbatham/openredirex &> /dev/null
+		cd openredirex
+		sudo chmod +x setup.sh
+		./setup.sh &> /dev/null
+		cd ..
+`,
+	},
+	{
+		Name:         "lorsrf",
+		Category:     "Exploitation",
+		Subcategory:  "SSRF",
+		Requirements: []string{"cargo"},
+		InstallCmd:   `cargo install --git https://github.com/knassar702/lorsrf &> /dev/null`,
+	},
+	{
+		Name:         "whonow",
+		Category:     "Exploitation",
+		Subcategory:  "SSRF",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install --cli -g whonow@latest &> /dev/null`,
+	},
+	{
+		Name:         "sqlmap",
+		Category:     "Exploitation",
+		Subcategory:  "SQL Injection",
+		Requirements: []string{"pipx"},
+		InstallCmd:   `pipx install sqlmap &> /dev/null`,
+	},
+	{
+		Name:         "nosqli",
+		Category:     "Exploitation",
+		Subcategory:  "SQL Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Charlie-belmer/nosqli@latest &> /dev/null`,
+	},
+	{
+		Name:         "dalfox",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/hahwul/dalfox/v2@latest &> /dev/null`,
+	},
+	{
+		Name:         "XSpear",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"gem"},
+		InstallCmd:   `gem install XSpear &> /dev/null`,
+	},
+	{
+		Name:         "xsser",
+		Category:     "Exploitation",
+		Subcategory:  "XSS",
+		Requirements: []string{"git", "python3"},
+		InstallCmd: `
+		git clone https://github.com/epsylon/xsser &> /dev/null
+		cd xsser
+		python3 setup.py install &> /dev/null
+		cd ..`,
+	},
+	{
+		Name:         "xxexploiter",
+		Category:     "Exploitation",
+		Subcategory:  "XXE Injection",
+		Requirements: []string{"npm"},
+		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
+	},
 	/*
 		{
 			Name:         "",
