@@ -394,7 +394,7 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `pipx install clairvoyance &> /dev/null`,
 	},
 	{
-		Name:         "shapeshifter",
+		Name:         "shifter",
 		Category:     "Exploitation",
 		Subcategory:  "GraphQL Injection",
 		Requirements: []string{"git", "python3"},
@@ -403,6 +403,38 @@ var SecTools = []types.SecTool{
 		cd shapeshifter/shapeshifter
 		python3 setup.py install &> /dev/null
 		cd ../..
+		`,
+	},
+	{
+		Name:         "headi",
+		Category:     "Exploitation",
+		Subcategory:  "Header Injection",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/mlcsec/headi@latest &> /dev/null`,
+	},
+	{
+		Name:         "openredirex",
+		Category:     "Exploitation",
+		Subcategory:  "Open Redirect",
+		Requirements: []string{},
+		InstallCmd: `
+		git clone https://github.com/devanshbatham/openredirex &> /dev/null
+		cd openredirex
+		sudo chmod +x setup.sh
+		./setup.sh
+		cd ..
+`,
+	},
+	{
+		Name:         "requests-racer",
+		Category:     "Exploitation",
+		Subcategory:  "Race Condition",
+		Requirements: []string{},
+		InstallCmd: `
+		git clone https://github.com/nccgroup/requests-racer.git &> /dev/null
+		cd requests-racer
+		python setup.py install &> /dev/null
+		cd ..
 		`,
 	},
 	/*
