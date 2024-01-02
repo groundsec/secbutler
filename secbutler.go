@@ -5,7 +5,7 @@ import (
 	"github.com/groundsec/secbutler/pkg/utils"
 )
 
-var version = "0.1.4"
+var version = "0.1.5"
 
 func main() {
 	utils.Banner(version)
