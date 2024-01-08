@@ -15,7 +15,10 @@ import (
 
 var startInstallWordlistsFunc = `function install_wordlists {
   bold "Installing wordlists"`
-var endInstallWordlistsFunc = "\n}"
+var endInstallWordlistsFunc = "}"
+
+var startUpdateShellFunc = "function update_shell {"
+var endUpdateShellFunc = "\n}"
 
 var endInstallWordlistTpl = `
 function main {
@@ -23,6 +26,7 @@ function main {
   check_requirements
   mkdir -p /usr/share/wordlists && cd /usr/share/wordlists
   install_wordlists
+  update_shell
 }
 
 main $@
@@ -55,12 +59,15 @@ func generateWordlistsScript(chosenWordlists []string) {
 			}
 		}
 	}
-	installWordlist = strings.Join([]string{installWordlist, "\n\n  success \"Installation completed.\"", endInstallWordlistsFunc}, "")
+	installWordlist = strings.Join([]string{installWordlist, "\n\n  success \"Installation completed.\""}, "")
+	installWordlist = strings.Join([]string{installWordlist, "  success \"All the wordlists are in the /usr/share/wordlists folder.\""}, "\n")
+	installWordlist = strings.Join([]string{installWordlist, "  success \"For quick usage the 'WORDLISTS' variable has been added to your shell as an alias (reload your shell).\"", endInstallWordlistsFunc}, "\n")
 
 	// Add the 'WORDLISTS' variable to your current shell
 	shellFile := utils.GetShellRc()
-	installWordlist = strings.Join([]string{installWordlist, fmt.Sprintf("echo \"export WORDLISTS=\"/usr/share/wordlists\"\" >> %s", shellFile)}, "\n\n")
-	installWordlist = strings.Join([]string{installWordlist, fmt.Sprintf("source %s", shellFile)}, "\n\n")
+	installWordlist = strings.Join([]string{installWordlist, startUpdateShellFunc}, "\n\n")
+	installWordlist = strings.Join([]string{installWordlist, fmt.Sprintf("  echo \"export WORDLISTS=\"/usr/share/wordlists\"\" >> %s", shellFile)}, "\n")
+	installWordlist = strings.Join([]string{installWordlist, endUpdateShellFunc}, "")
 
 	// Add check requirements function
 	installWordlist = strings.Join([]string{installWordlist, utils.StartCheckRequiremenstFunc}, "\n\n")

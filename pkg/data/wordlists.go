@@ -31,9 +31,6 @@ var Wordlists = []types.Wordlist{
 	{
 		Name:         "Assetnote",
 		Requirements: []string{"wget"},
-		InstallCmd: `
-		cd /usr/share/wordlists
-		wget -r --no-parent -R "index.html*" https://wordlists-cdn.assetnote.io/data/ -nH -e robots=off &> /dev/null
-		cd ..`,
+		InstallCmd:   `wget -r --no-parent -R "index.html*" https://wordlists-cdn.assetnote.io/data/ -nH -e robots=off -P /usr/share/wordlists/Assetnote/ -nd &> /dev/null`,
 	},
 }

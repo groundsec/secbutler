@@ -31,12 +31,12 @@ function error {
 `
 
 var StartCheckRequiremenstFunc = `function check_requirements {
-	bold "Checking requirements"	
+  bold "Checking requirements"	
 `
 
 var EndCheckRequirementsFunc = `
   for requirement in ${REQUIREMENTS[@]}; do
-		info "Checking if requirement '$requirement' is installed"
+    info "Checking if requirement '$requirement' is installed"
     if ! command -v $requirement &> /dev/null; then
       error "Requirement '$requirement' is not installed, impossible to continue installation"
       exit 1
@@ -44,5 +44,5 @@ var EndCheckRequirementsFunc = `
       success "Requirement '$requirement' is correctly installed"
     fi
   done
-	echo ""
+  echo ""
 }`
