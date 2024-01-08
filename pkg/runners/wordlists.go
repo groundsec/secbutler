@@ -57,6 +57,11 @@ func generateWordlistsScript(chosenWordlists []string) {
 	}
 	installWordlist = strings.Join([]string{installWordlist, "\n\n  success \"Installation completed.\"", endInstallWordlistsFunc}, "")
 
+	// Add the 'WORDLISTS' variable to your current shell
+	shellFile := utils.GetShellRc()
+	installWordlist = strings.Join([]string{installWordlist, fmt.Sprintf("echo \"export WORDLISTS=\"/usr/share/wordlists\"\" >> %s", shellFile)}, "\n\n")
+	installWordlist = strings.Join([]string{installWordlist, fmt.Sprintf("source %s", shellFile)}, "\n\n")
+
 	// Add check requirements function
 	installWordlist = strings.Join([]string{installWordlist, utils.StartCheckRequiremenstFunc}, "\n\n")
 
@@ -66,7 +71,7 @@ func generateWordlistsScript(chosenWordlists []string) {
 	installWordlist = strings.Join([]string{installWordlist, endInstallWordlistTpl}, "\n")
 
 	// Write the content to the file, creating it or overwriting if it already exists.
-	installWordlistsFilePath := filepath.Join(utils.UserHomeDir(), utils.MainDirName, "install_wordlistss.sh")
+	installWordlistsFilePath := filepath.Join(utils.UserHomeDir(), utils.MainDirName, "install_wordlists.sh")
 	err := os.WriteFile(installWordlistsFilePath, []byte(installWordlist), 0644)
 	if err != nil {
 		logger.Fatal(err)
