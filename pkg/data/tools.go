@@ -862,6 +862,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install -v github.com/edoardottt/cariddi/cmd/cariddi@latest &> /dev/null`,
 	},
 	{
+		Name:         "grype",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin &> /dev/null`,
+	},
+	{
 		Name:         "findsploit",
 		Category:     "Misc",
 		Subcategory:  "Vulnerability Scanners",
