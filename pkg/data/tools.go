@@ -237,6 +237,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/jaeles-project/gospider@latest &> /dev/null`,
 	},
 	{
+		Name:         "katana",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/projectdiscovery/katana/cmd/katana@latest &> /dev/null`,
+	},
+	{
 		Name:         "hakrawler",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
@@ -876,6 +883,13 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Uncategorized",
 		Requirements: []string{"go"},
 		InstallCmd:   `go install github.com/edoardottt/csprecon/cmd/csprecon@latest &> /dev/null`,
+	},
+	{
+		Name:         "h8mail",
+		Category:     "Misc",
+		Subcategory:  "OSINT",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install h8mail &> /dev/null`,
 	},
 	/*
 		{
