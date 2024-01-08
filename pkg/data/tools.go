@@ -333,6 +333,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `curl -s https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash &> /dev/null`,
 	},
 	{
+		Name:         "mapcidr",
+		Category:     "Recon",
+		Subcategory:  "Misc",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest &> /dev/null`,
+	},
+	{
 		Name:         "commix",
 		Category:     "Exploitation",
 		Subcategory:  "Command Injection",
@@ -890,6 +897,13 @@ var SecTools = []types.SecTool{
 		Subcategory:  "OSINT",
 		Requirements: []string{"python3", "pipx"},
 		InstallCmd:   `pipx install h8mail &> /dev/null`,
+	},
+	{
+		Name:         "maigret",
+		Category:     "Misc",
+		Subcategory:  "OSINT",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install maigret &> /dev/null`,
 	},
 	/*
 		{
