@@ -912,6 +912,13 @@ var SecTools = []types.SecTool{
 		Requirements: []string{"python3", "pipx"},
 		InstallCmd:   `pipx install maigret &> /dev/null`,
 	},
+	{
+		Name:         "maigret",
+		Category:     "Misc",
+		Subcategory:  "Post-Exploitation",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install pypykatz &> /dev/null`,
+	},
 	/*
 		{
 			Name:         "",
