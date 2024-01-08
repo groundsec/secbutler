@@ -14,34 +14,7 @@ import (
 	"golang.org/x/exp/slices"
 )
 
-var startInstallScriptTpl = `
-#!/usr/bin/env bash
-
-function banner {
-  echo "                   __          __  __"
-  echo "   ________  _____/ /_  __  __/ /_/ /__  _____"
-  echo "  / ___/ _ \/ ___/ __ \/ / / / __/ / _ \/ ___/"
-  echo " (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /"    
-  echo "/____/\___/\___/_.___/\__,_/\__/_/\___/_/"
-  echo ""
-}
-
-function bold {
-  echo -e "\033[1m$1\033[0m"
-}
-
-function info {
-  echo -e "\e[33m[INFO] $1\e[0m"
-}
-
-function success {
-  echo -e "\e[32m[SUCC] $1\e[0m"
-}
-
-function error {
-  echo -e "\e[31m[ERRO] $1\e[0m"
-}
-
+var checkToolFunc = `
 function check_tool {
   if ! command -v $1 &> /dev/null; then
     error "'$1' not installed (or not in PATH)"
@@ -55,22 +28,6 @@ function check_tool {
 var startInstallToolsFunc = `function install_tools {
   bold "Installing tools"`
 var endInstallToolsFunc = "\n}"
-var startCheckRequiremenstFunc = `function check_requirements {
-	bold "Checking requirements"	
-`
-
-var endCheckRequirementsFunc = `
-  for requirement in ${REQUIREMENTS[@]}; do
-		info "Checking if requirement '$requirement' is installed"
-    if ! command -v $requirement &> /dev/null; then
-      error "Requirement '$requirement' is not installed, impossible to continue installation"
-      exit 1
-    else
-      success "Requirement '$requirement' is correctly installed"
-    fi
-  done
-	echo ""
-}`
 
 var endInstallScriptTpl = `
 function main {
@@ -83,7 +40,7 @@ function main {
 main $@
 `
 
-func getGroupedOptions(groupingChoice string) ([]string, error) {
+func getToolsGroupedOptions(groupingChoice string) ([]string, error) {
 	var groupedOptions []string
 	for _, tool := range data.SecTools {
 		var matchingEl string
@@ -104,10 +61,10 @@ func getGroupedOptions(groupingChoice string) ([]string, error) {
 	return groupedOptions, nil
 }
 
-func generateScript(groupingChoice string, chosenGroups []string) {
+func generateToolsScript(groupingChoice string, chosenGroups []string) {
 	requirements := []string{}
-	installScript := startInstallScriptTpl
-	installScript = strings.Join([]string{installScript, startInstallToolsFunc}, "\n")
+	installScript := utils.StartInstallTpl
+	installScript = strings.Join([]string{installScript, checkToolFunc, startInstallToolsFunc}, "\n")
 
 	// Get list of tools
 	for _, tool := range data.SecTools {
@@ -146,10 +103,10 @@ func generateScript(groupingChoice string, chosenGroups []string) {
 	installScript = strings.Join([]string{installScript, "\n\n  success \"Installation completed.\"", endInstallToolsFunc}, "")
 
 	// Add check requirements function
-	installScript = strings.Join([]string{installScript, startCheckRequiremenstFunc}, "\n\n")
+	installScript = strings.Join([]string{installScript, utils.StartCheckRequiremenstFunc}, "\n\n")
 
 	requirementsLine := fmt.Sprintf("  REQUIREMENTS=(%s)", strings.Join(requirements, " "))
-	installScript = strings.Join([]string{installScript, requirementsLine, endCheckRequirementsFunc}, "\n")
+	installScript = strings.Join([]string{installScript, requirementsLine, utils.EndCheckRequirementsFunc}, "\n")
 
 	installScript = strings.Join([]string{installScript, endInstallScriptTpl}, "\n")
 
@@ -179,7 +136,7 @@ func GenerateToolsInstallScript() {
 	if err != nil {
 		logger.Fatalf("Error: %v", err)
 	}
-	groupedOptions, err := getGroupedOptions(groupingChoice)
+	groupedOptions, err := getToolsGroupedOptions(groupingChoice)
 	if err != nil {
 		logger.Fatalf("Error: %v", err)
 	}
@@ -193,5 +150,5 @@ func GenerateToolsInstallScript() {
 	if err != nil {
 		logger.Fatalf("Error: %v", err)
 	}
-	generateScript(groupingChoice, chosenGroups)
+	generateToolsScript(groupingChoice, chosenGroups)
 }
