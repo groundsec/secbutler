@@ -24,7 +24,7 @@ The goal is to obtain a tool that meets the requirements of the community, there
 - [x] Download & deploy common payloads
 - [x] Obtain reverse shell listener command
 - [x] Generate bash install script for common tools
-- [ ] Manage Wordlists
+- [x] Generate bash download script for Wordlists
 - [ ] Record session
 
 ## 📚 Usage
