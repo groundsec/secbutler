@@ -237,6 +237,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/jaeles-project/gospider@latest &> /dev/null`,
 	},
 	{
+		Name:         "katana",
+		Category:     "Recon",
+		Subcategory:  "Content Discovery",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/projectdiscovery/katana/cmd/katana@latest &> /dev/null`,
+	},
+	{
 		Name:         "hakrawler",
 		Category:     "Recon",
 		Subcategory:  "Content Discovery",
@@ -324,6 +331,13 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Fuzzing",
 		Requirements: []string{"curl", "sudo", "bash"},
 		InstallCmd:   `curl -s https://raw.githubusercontent.com/d4rckh/vaf/main/install.sh | sudo bash &> /dev/null`,
+	},
+	{
+		Name:         "mapcidr",
+		Category:     "Recon",
+		Subcategory:  "Misc",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest &> /dev/null`,
 	},
 	{
 		Name:         "commix",
@@ -484,6 +498,13 @@ var SecTools = []types.SecTool{
 		Subcategory:  "XXE Injection",
 		Requirements: []string{"npm"},
 		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
+	},
+	{
+		Name:         "NetExec",
+		Category:     "Exploitation",
+		Subcategory:  "Generic",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install git+https://github.com/Pennyw0rth/NetExec &> /dev/null`,
 	},
 	{
 		Name:         "creds",
@@ -848,6 +869,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install -v github.com/edoardottt/cariddi/cmd/cariddi@latest &> /dev/null`,
 	},
 	{
+		Name:         "grype",
+		Category:     "Misc",
+		Subcategory:  "Vulnerability Scanners",
+		Requirements: []string{"go"},
+		InstallCmd:   `curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin &> /dev/null`,
+	},
+	{
 		Name:         "findsploit",
 		Category:     "Misc",
 		Subcategory:  "Vulnerability Scanners",
@@ -876,6 +904,20 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Uncategorized",
 		Requirements: []string{"go"},
 		InstallCmd:   `go install github.com/edoardottt/csprecon/cmd/csprecon@latest &> /dev/null`,
+	},
+	{
+		Name:         "h8mail",
+		Category:     "Misc",
+		Subcategory:  "OSINT",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install h8mail &> /dev/null`,
+	},
+	{
+		Name:         "pypykatz",
+		Category:     "Misc",
+		Subcategory:  "Post-Exploitation",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install pypykatz &> /dev/null`,
 	},
 	/*
 		{

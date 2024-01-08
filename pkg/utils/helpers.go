@@ -114,3 +114,23 @@ func RemoveEmptyStrings(stringArr []string) []string {
 	}
 	return nonEmptyLines
 }
+
+func GetCurrentShell() string {
+	shell := os.Getenv("SHELL")
+	if shell == "" {
+		return "unknown" // Default value if SHELL variable is not set
+	}
+	return shell
+}
+
+func GetShellRc() string {
+	shell := GetCurrentShell()
+	switch shell {
+	case "/bin/bash":
+		return "~/.bashrc"
+	case "/bin/zsh":
+		return "~/.zshrc"
+	default:
+		return "~/.bashrc"
+	}
+}
