@@ -500,6 +500,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `npm install -g xxexploiter &> /dev/null`,
 	},
 	{
+		Name:         "NetExec",
+		Category:     "Exploitation",
+		Subcategory:  "Generic",
+		Requirements: []string{"python3", "pipx"},
+		InstallCmd:   `pipx install git+https://github.com/Pennyw0rth/NetExec &> /dev/null`,
+	},
+	{
 		Name:         "creds",
 		Category:     "Misc",
 		Subcategory:  "Bruteforce",
