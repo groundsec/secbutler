@@ -61,12 +61,15 @@ func ShowCheatsheet() {
 			prompt := &survey.Confirm{
 				Message: fmt.Sprintf("%s is missing, do you want to download it?", cheatsheet.Name),
 			}
-			survey.AskOne(prompt, &download)
+			err := survey.AskOne(prompt, &download)
+			if err != nil {
+				logger.Fatalf("Error: %v", err)
+			}
 			if !download {
 				logger.Error("You cannot continue without downloading the cheatsheet")
 				os.Exit(1)
 			}
-			_, err := git.PlainClone(filepath.Join(utils.UserHomeDir(), utils.MainDirName, utils.CheatsheetsDirName, cheatsheet.Name), false, &git.CloneOptions{
+			_, err = git.PlainClone(filepath.Join(utils.UserHomeDir(), utils.MainDirName, utils.CheatsheetsDirName, cheatsheet.Name), false, &git.CloneOptions{
 				URL:      cheatsheet.Repository,
 				Progress: os.Stdout,
 			})
