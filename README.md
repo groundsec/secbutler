@@ -42,7 +42,7 @@ This will display the help for the tool
  (__  )  __/ /__/ /_/ / /_/ / /_/ /  __/ /
 /____/\___/\___/_.___/\__,_/\__/_/\___/_/
 
-v0.1.7 - https://github.com/groundsec/secbutler
+v0.1.8 - https://github.com/groundsec/secbutler
 
 Essential utilities for pentester, bug-bounty hunters and security researchers
 
@@ -51,6 +51,7 @@ Usage:
   secbutler [command]
 
 Available Commands:
+  cheatsheet  Read common cheatsheets & payloads
   help        Help about any command
   listener    Obtain the command to start a reverse shell listener
   payloads    Obtain and serve common payloads
@@ -58,12 +59,13 @@ Available Commands:
   revshell    Obtain the command for a reverse shell
   tools       Generate a install script for the most common cybersecurity tools
   version     Print the current version
-  wordlists   Generate a install script for the most common wordlists
+  wordlists   Generate a download script for the most common wordlists
 
 Flags:
   -h, --help   help for secbutler
 
 Use "secbutler [command] --help" for more information about a command.
+
 
 ```
 
