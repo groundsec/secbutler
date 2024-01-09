@@ -30,4 +30,5 @@ var ANSICodes = map[string]string{
 const Version = "0.1.7"
 const MainDirName = ".secbutler"
 const PayloadsDirName = "payloads"
+const CheatsheetsDirName = "cheatsheets"
 const ToolsDirName = "tools"
