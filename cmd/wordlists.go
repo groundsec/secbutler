@@ -7,7 +7,7 @@ import (
 
 var wordlistsCmd = &cobra.Command{
 	Use:   "wordlists",
-	Short: "Generate a install script for the most common wordlists",
+	Short: "Generate a download script for the most common wordlists",
 	Run: func(cmd *cobra.Command, args []string) {
 		runners.GenerateWordlistsInstallScript()
 	},

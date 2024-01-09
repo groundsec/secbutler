@@ -19,13 +19,13 @@ The goal is to obtain a tool that meets the requirements of the community, there
 
 ## ⚡ Features
 
-- [x] Generate a reverse shell command
-- [x] Obtain proxy
-- [x] Download & deploy common payloads
-- [x] Obtain reverse shell listener command
-- [x] Generate bash install script for common tools
-- [x] Generate bash download script for Wordlists
-- [ ] Record session
+- Generate a reverse shell command
+- Obtain proxy
+- Download & deploy common payloads
+- Obtain reverse shell listener command
+- Generate bash install script for common tools
+- Generate bash download script for Wordlists
+- Read common cheatsheets and payloads
 
 ## 📚 Usage
 
