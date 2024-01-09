@@ -42,7 +42,7 @@ func generateWordlistsScript(chosenWordlists []string) {
 		if slices.Contains(chosenWordlists, wordlist.Name) {
 
 			// Update tpl
-			lines := strings.Split(wordlist.InstallCmd, "\n")
+			lines := strings.Split(wordlist.DownloadCmd, "\n")
 			for i, line := range lines {
 				lines[i] = fmt.Sprintf("  %s", strings.TrimSpace(line))
 			}
