@@ -146,6 +146,18 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install -v github.com/d3mondev/puredns/v2@latest &> /dev/null`,
 	},
 	{
+		Name:         "dnsvalidator",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"git", "pipx"},
+		InstallCmd: `
+		git clone https://github.com/vortexau/dnsvalidator &> /dev/null
+		cd dnsvalidator
+		pipx install . &> /dev/null
+		cd ..
+		`,
+	},
+	{
 		Name:         "masscan",
 		Category:     "Recon",
 		Subcategory:  "Port Scanning",
