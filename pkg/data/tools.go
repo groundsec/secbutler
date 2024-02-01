@@ -74,6 +74,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/Josue87/analyticsrelationships@latest &> /dev/null`,
 	},
 	{
+		Name:         "gotator",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Josue87/gotator@latest &> /dev/null`,
+	},
+	{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
