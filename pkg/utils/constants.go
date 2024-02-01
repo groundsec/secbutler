@@ -27,7 +27,7 @@ var ANSICodes = map[string]string{
 	"WhiteBackground":   "\033[47m",
 }
 
-const Version = "0.1.8"
+const Version = "0.1.9"
 const MainDirName = ".secbutler"
 const PayloadsDirName = "payloads"
 const CheatsheetsDirName = "cheatsheets"
