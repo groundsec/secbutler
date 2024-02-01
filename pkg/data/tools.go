@@ -126,6 +126,26 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/glebarez/cero@latest &> /dev/null`,
 	},
 	{
+		Name:         "massdns",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"make", "git", "gcc"},
+		InstallCmd: `
+		git clone https://github.com/blechschmidt/massdns.git &> /dev/null
+		cd massdns
+		make &> /dev/null
+		make install &> /dev/null
+		cd ..
+		`,
+	},
+	{
+		Name:         "puredns",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/d3mondev/puredns/v2@latest &> /dev/null`,
+	},
+	{
 		Name:         "masscan",
 		Category:     "Recon",
 		Subcategory:  "Port Scanning",
