@@ -53,6 +53,34 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/hakluke/hakrevdns@latest &> /dev/null`,
 	},
 	{
+		Name:         "crobat",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cgboal/sonarsearch/cmd/crobat@latest &> /dev/null`,
+	},
+	{
+		Name:         "github-subdomains",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/gwen001/github-subdomains@latest &> /dev/null`,
+	},
+	{
+		Name:         "analyticsrelationships",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Josue87/analyticsrelationships@latest &> /dev/null`,
+	},
+	{
+		Name:         "gotator",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/Josue87/gotator@latest &> /dev/null`,
+	},
+	{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
@@ -96,6 +124,38 @@ var SecTools = []types.SecTool{
 		Subcategory:  "Subdomain Enumeration",
 		Requirements: []string{"go"},
 		InstallCmd:   `go install github.com/glebarez/cero@latest &> /dev/null`,
+	},
+	{
+		Name:         "massdns",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"make", "git", "gcc"},
+		InstallCmd: `
+		git clone https://github.com/blechschmidt/massdns.git &> /dev/null
+		cd massdns
+		make &> /dev/null
+		make install &> /dev/null
+		cd ..
+		`,
+	},
+	{
+		Name:         "puredns",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install -v github.com/d3mondev/puredns/v2@latest &> /dev/null`,
+	},
+	{
+		Name:         "dnsvalidator",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"git", "pipx"},
+		InstallCmd: `
+		git clone https://github.com/vortexau/dnsvalidator &> /dev/null
+		cd dnsvalidator
+		pipx install . &> /dev/null
+		cd ..
+		`,
 	},
 	{
 		Name:         "masscan",
