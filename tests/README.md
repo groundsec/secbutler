@@ -22,5 +22,5 @@ docker run -it --rm -v $PWD:/secbutler groundsec/secbutler-tools
 Then, inside the container, run:
 
 ```bash
-/secbutler/install_tools
+/secbutler/install_tools.sh
 ```

@@ -53,6 +53,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/hakluke/hakrevdns@latest &> /dev/null`,
 	},
 	{
+		Name:         "crobat",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/cgboal/sonarsearch/cmd/crobat@latest &> /dev/null`,
+	},
+	{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
