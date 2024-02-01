@@ -60,6 +60,13 @@ var SecTools = []types.SecTool{
 		InstallCmd:   `go install github.com/cgboal/sonarsearch/cmd/crobat@latest &> /dev/null`,
 	},
 	{
+		Name:         "github-subdomains",
+		Category:     "Recon",
+		Subcategory:  "Subdomain Enumeration",
+		Requirements: []string{"go"},
+		InstallCmd:   `go install github.com/gwen001/github-subdomains@latest &> /dev/null`,
+	},
+	{
 		Name:         "knockpy",
 		Category:     "Recon",
 		Subcategory:  "Subdomain Enumeration",
